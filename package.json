@@ -1,0 +1,13 @@
+{
+  "name": "padmini-resources-b2b",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Padmini Resources B2B static website",
+  "scripts": {
+    "dev": "http-server . -p 8080 -c-1 -o",
+    "start": "http-server . -p 8080 -c-1"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

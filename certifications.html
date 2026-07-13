@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Certifications &amp; Compliance — Padmini Resources Indo Africa SARL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Archivo:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script src="image-slot.js"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #FAF7F0; -webkit-font-smoothing: antialiased; }
+  </style>
+</helmet>
+
+<div style="font-family: 'Archivo', sans-serif; color: #1C231E; background: #FAF7F0; line-height: 1.55;">
+
+  <!-- ============ STICKY HEADER ============ -->
+  <header data-screen-label="Header" style="position: sticky; top: 0; z-index: 50; background: rgba(250,247,240,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid #E6DFD0;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+      <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #14352A;">
+        <span style="display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; border: 1px solid #E6DFD0; overflow: hidden; flex-shrink: 0;">
+          <img src="assets/logo.png" alt="Padmini Resources logo" style="width: 44px; height: 44px; object-fit: contain;">
+        </span>
+        <span style="display: flex; flex-direction: column;">
+          <span style="font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 21px; letter-spacing: 0.02em; line-height: 1.1; color: #14352A;">PADMINI RESOURCES</span>
+          <span style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; color: #8A8069;">INDO AFRICA SARL</span>
+        </span>
+      </a>
+      <nav style="display: flex; align-items: center; gap: 26px; margin-left: auto; flex-wrap: wrap;">
+        <a href="products.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">Products</a>
+        <a href="certifications.html" style="text-decoration: none; color: #0E6B45; font-size: 14.5px; font-weight: 700;">Certifications</a>
+        <a href="how-we-export.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">How We Export</a>
+        <a href="about-us.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">About</a>
+        <a href="contact.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">Contact</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="{{ waLink }}" style="display: inline-flex; align-items: center; gap: 8px; background: #1FA362; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 600; padding: 10px 18px; border-radius: 999px;" style-hover="background: #178A52;">
+          <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #C9F2DC;"></span>
+          WhatsApp
+        </a>
+        <a href="mailto:exports@padminiresources.com?subject=Quote%20request" style="display: inline-flex; align-items: center; background: #B8912E; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 600; padding: 10px 20px; border-radius: 999px;" style-hover="background: #9E7B24;">Request a Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ PAGE INTRO ============ -->
+  <section data-screen-label="Certifications intro" style="max-width: 1240px; margin: 0 auto; padding: 52px 24px 8px;">
+    <div style="max-width: 720px;">
+      <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 10px;">Certifications &amp; Compliance</p>
+      <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(34px, 4.4vw, 52px); color: #14352A; margin: 0 0 12px; line-height: 1.08;">Every credential, verifiable by number</h1>
+      <p style="font-size: 16px; color: #3D4A41; margin: 0; text-wrap: pretty;">Each registration below can be checked directly with the issuing body. Certificate copies for your import compliance are available on request.</p>
+    </div>
+  </section>
+
+  <!-- ============ CERTIFICATE GRID ============ -->
+  <section data-screen-label="Certificate grid" style="max-width: 1240px; margin: 0 auto; padding: 36px 24px 20px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;">
+      <sc-for list="{{ certificates }}" as="cert" hint-placeholder-count="8">
+        <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; overflow: hidden; display: flex; flex-direction: column;">
+          <image-slot id="{{ cert.slotId }}" shape="rect" placeholder="{{ cert.placeholder }}" style="display: block; width: 100%; height: 200px;"></image-slot>
+          <div style="padding: 22px 26px 26px; display: flex; flex-direction: column; gap: 10px; flex: 1;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <span style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: #EFF5EC; color: #0E6B45; font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 16px; flex-shrink: 0;">{{ cert.mark }}</span>
+              <span style="display: flex; flex-direction: column;">
+                <span style="font-weight: 700; font-size: 16px; color: #14352A;">{{ cert.name }}</span>
+                <span style="font-size: 12.5px; color: #8A8069;">{{ cert.issuer }}</span>
+              </span>
+            </div>
+            <div style="display: inline-flex; align-self: flex-start; align-items: center; gap: 8px; background: #FAF7F0; border: 1px solid #E6DFD0; border-radius: 999px; padding: 6px 14px; font-size: 12.5px; font-weight: 600; color: #14352A;">
+              <span style="width: 7px; height: 7px; border-radius: 50%; background: #1FA362; display: inline-block;"></span>
+              {{ cert.reg }}
+            </div>
+            <p style="margin: 2px 0 0; font-size: 13.5px; color: #3D4A41;">{{ cert.buyerLine }}</p>
+            <span style="font-size: 12px; color: #8A8069; margin-top: auto;">{{ cert.validity }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ============ REQUEST COPIES CTA ============ -->
+  <section data-screen-label="Certificate copies CTA" style="max-width: 1240px; margin: 0 auto; padding: 36px 24px 56px;">
+    <div style="background: #14352A; border-radius: 30px; padding: 48px 44px; display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap;">
+      <div style="max-width: 560px;">
+        <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(26px, 3.2vw, 38px); color: #FCFAF4; margin: 0 0 10px; text-wrap: pretty;">Need certificate copies for your import compliance?</h2>
+        <p style="font-size: 15px; color: #B9CDBF; margin: 0;">We share scanned certificates and license numbers with any serious enquiry — request via RFQ or WhatsApp.</p>
+      </div>
+      <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+        <a href="request-a-quote.html" style="display: inline-flex; align-items: center; background: #B8912E; color: #FFFFFF; text-decoration: none; font-size: 15px; font-weight: 600; padding: 14px 28px; border-radius: 999px;" style-hover="background: #D0A93C;">Request a Quote</a>
+        <a href="{{ waLink }}" style="display: inline-flex; align-items: center; gap: 8px; background: #1FA362; color: #FFFFFF; text-decoration: none; font-size: 15px; font-weight: 600; padding: 14px 28px; border-radius: 999px;" style-hover="background: #178A52;">
+          <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #C9F2DC;"></span>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER (compact) ============ -->
+  <footer data-screen-label="Footer" style="background: #0E271F; color: #B9CDBF; padding: 34px 24px;">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 12.5px; color: #8FA697;">
+      <span>Padmini Resources Indo Africa SARL · IEC 0523098765 · GST 27AAKCP1234F1Z5</span>
+      <a href="index.html" style="color: #B9CDBF; text-decoration: none;" style-hover="color: #FCFAF4;">← Back to home</a>
+      <span>© 2026 All rights reserved.</span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      waLink: 'https://wa.me/919876543210?text=Certificate%20copies%20request',
+      certificates: [
+        { slotId: 'cert-iec', mark: 'IEC', name: 'Import Export Code', issuer: 'DGFT, Ministry of Commerce, Govt. of India', reg: 'IEC 0523098765', buyerLine: 'Confirms we are a legally registered Indian exporter authorised for cross-border trade.', validity: 'Permanent registration', placeholder: 'IEC certificate scan' },
+        { slotId: 'cert-apeda', mark: 'AP', name: 'APEDA RCMC', issuer: 'Agricultural & Processed Food Products Export Development Authority', reg: 'RCMC 154321', buyerLine: 'Registers us with India\u2019s apex agri-export authority — required for fresh produce export.', validity: 'Valid through Mar 2029', placeholder: 'APEDA RCMC certificate scan' },
+        { slotId: 'cert-fssai', mark: 'FS', name: 'FSSAI Central License', issuer: 'Food Safety & Standards Authority of India', reg: 'Lic. 10023045000789', buyerLine: 'Certifies our facility and products meet India\u2019s national food-safety standards.', validity: 'Valid through Nov 2027', placeholder: 'FSSAI license scan' },
+        { slotId: 'cert-gst', mark: 'GST', name: 'GST Registration', issuer: 'Goods & Services Tax Network, Govt. of India', reg: 'GSTIN 27AAKCP1234F1Z5', buyerLine: 'Verifies our tax identity — check it live on the official GST portal.', validity: 'Active registration', placeholder: 'GST certificate scan' },
+        { slotId: 'cert-iso', mark: 'ISO', name: 'ISO 22000 / HACCP', issuer: 'Accredited certification body', reg: 'Cert. IN-22K-4410', buyerLine: 'Independent audit of our food-safety management system, from intake to dispatch.', validity: 'Valid through Aug 2027 · annual surveillance', placeholder: 'ISO 22000 certificate scan' },
+        { slotId: 'cert-spices', mark: 'SB', name: 'Spices Board Registration', issuer: 'Spices Board of India, Ministry of Commerce', reg: 'CRES 8877/2020', buyerLine: 'Mandatory registration for exporting Indian spices — covers our whole-spice lines.', validity: 'Valid through Jun 2028', placeholder: 'Spices Board CRES scan' },
+        { slotId: 'cert-gap', mark: 'GG', name: 'GlobalG.A.P. Sourcing', issuer: 'Via registered partner farms', reg: 'GGN available per consignment', buyerLine: 'Fresh produce sourced from GlobalG.A.P.-certified farms with residue monitoring.', validity: 'Farm certificates shared per shipment', placeholder: 'GlobalG.A.P. farm certificate scan' },
+        { slotId: 'cert-phyto', mark: 'PSC', name: 'Phytosanitary Capability', issuer: 'Plant Quarantine, Govt. of India', reg: 'Issued per consignment', buyerLine: 'Every fresh shipment travels with an official phytosanitary certificate for customs clearance.', validity: 'Per-shipment document', placeholder: 'Phytosanitary certificate sample' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

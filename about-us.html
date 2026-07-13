@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>About Us — Padmini Resources Indo Africa SARL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Archivo:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script src="image-slot.js"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #FAF7F0; -webkit-font-smoothing: antialiased; }
+  </style>
+</helmet>
+
+<div style="font-family: 'Archivo', sans-serif; color: #1C231E; background: #FAF7F0; line-height: 1.55;">
+
+  <header data-screen-label="Header" style="position: sticky; top: 0; z-index: 50; background: rgba(250,247,240,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid #E6DFD0;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+      <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #14352A;">
+        <span style="display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; border: 1px solid #E6DFD0; overflow: hidden; flex-shrink: 0;">
+          <img src="assets/logo.png" alt="Padmini Resources logo" style="width: 44px; height: 44px; object-fit: contain;">
+        </span>
+        <span style="display: flex; flex-direction: column;">
+          <span style="font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 21px; letter-spacing: 0.02em; line-height: 1.1; color: #14352A;">PADMINI RESOURCES</span>
+          <span style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; color: #8A8069;">INDO AFRICA SARL</span>
+        </span>
+      </a>
+      <nav style="display: flex; align-items: center; gap: 26px; margin-left: auto; flex-wrap: wrap;">
+        <a href="products.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">Products</a>
+        <a href="certifications.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">Certifications</a>
+        <a href="how-we-export.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">How We Export</a>
+        <a href="about-us.html" style="text-decoration: none; color: #0E6B45; font-size: 14.5px; font-weight: 700;">About</a>
+        <a href="contact.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">Contact</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="{{ waLink }}" style="display: inline-flex; align-items: center; gap: 8px; background: #1FA362; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 600; padding: 10px 18px; border-radius: 999px;" style-hover="background: #178A52;">
+          <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #C9F2DC;"></span>
+          WhatsApp
+        </a>
+        <a href="request-a-quote.html" style="display: inline-flex; align-items: center; background: #B8912E; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 600; padding: 10px 20px; border-radius: 999px;" style-hover="background: #9E7B24;">Request a Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Story -->
+  <section data-screen-label="Company story" style="max-width: 1240px; margin: 0 auto; padding: 52px 24px 8px;">
+    <div style="display: flex; flex-wrap: wrap; gap: 36px; align-items: flex-start;">
+      <div style="flex: 1 1 480px; min-width: 0;">
+        <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 10px;">About Us</p>
+        <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(34px, 4.4vw, 52px); color: #14352A; margin: 0 0 16px; line-height: 1.08;">A trading house built on repeat containers</h1>
+        <p style="font-size: 16px; color: #3D4A41; margin: 0 0 14px; text-wrap: pretty;">Padmini Resources Indo Africa SARL was founded in 2012 to connect Indian farms and mills with importers who need consistent quality, honest grading and paperwork that clears customs the first time.</p>
+        <p style="font-size: 16px; color: #3D4A41; margin: 0 0 14px; text-wrap: pretty;">We trade two lines: cold-chain fresh produce from Maharashtra's grape, pomegranate, mango and onion belts, and staples — rice, pulses, spices, tea — sourced from established mills and processors across India.</p>
+        <p style="font-size: 16px; color: #3D4A41; margin: 0; text-wrap: pretty;">Our philosophy is plain: quote what we can ship, grade what we quote, and document everything. That is why most of our volume is repeat business.</p>
+      </div>
+      <image-slot id="about-facility" shape="rounded" radius="26" placeholder="Facility exterior / team at packhouse" style="display: block; flex: 1 1 380px; min-height: 380px;"></image-slot>
+    </div>
+  </section>
+
+  <!-- Milestones -->
+  <section data-screen-label="Milestones" style="max-width: 1240px; margin: 0 auto; padding: 48px 24px 12px;">
+    <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; padding: 30px 26px; overflow-x: auto;">
+      <div style="display: flex; min-width: 900px;">
+        <sc-for list="{{ milestones }}" as="m" hint-placeholder-count="5">
+          <div style="flex: 1; position: relative; padding: 0 16px;">
+            <div style="display: flex; align-items: center;">
+              <span style="display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%; background: #14352A; color: #E8C766; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 16px; flex-shrink: 0;">{{ m.year }}</span>
+              <span style="flex: 1; height: 2px; background: {{ m.lineBg }};"></span>
+            </div>
+            <div style="font-weight: 700; font-size: 14.5px; color: #14352A; margin-top: 14px;">{{ m.title }}</div>
+            <div style="font-size: 13px; color: #3D4A41; margin-top: 5px; padding-right: 8px;">{{ m.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership -->
+  <section data-screen-label="Leadership" style="max-width: 1240px; margin: 0 auto; padding: 48px 24px 12px;">
+    <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 10px;">Leadership</p>
+    <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 40px); color: #14352A; margin: 0 0 12px;">The people you'll be dealing with</h2>
+    <p style="font-size: 15px; color: #3D4A41; margin: 0 0 26px; max-width: 620px;">Buyers wire money to identifiable people. Here are ours — reachable directly by email and WhatsApp.</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px;">
+      <sc-for list="{{ leaders }}" as="person" hint-placeholder-count="3">
+        <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; padding: 30px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px;">
+          <image-slot id="{{ person.slotId }}" shape="circle" placeholder="{{ person.placeholder }}" style="display: block; width: 130px; height: 130px; margin-bottom: 12px;"></image-slot>
+          <span style="font-weight: 700; font-size: 17px; color: #14352A;">{{ person.name }}</span>
+          <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; color: #B8912E; text-transform: uppercase;">{{ person.role }}</span>
+          <span style="font-size: 13.5px; color: #3D4A41;">{{ person.cred }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- Addresses -->
+  <section data-screen-label="Addresses" style="max-width: 1240px; margin: 0 auto; padding: 48px 24px 12px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px;">
+      <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; padding: 30px 32px;">
+        <div style="font-weight: 700; font-size: 13px; letter-spacing: 0.14em; color: #B8912E; text-transform: uppercase; margin-bottom: 10px;">Registered Office</div>
+        <p style="font-size: 14.5px; color: #3D4A41; margin: 0; line-height: 1.7;">Padmini Resources Indo Africa SARL<br>Plot 14, MIDC Agro Export Zone,<br>Nashik 422 010, Maharashtra, India</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; padding: 30px 32px;">
+        <div style="font-weight: 700; font-size: 13px; letter-spacing: 0.14em; color: #B8912E; text-transform: uppercase; margin-bottom: 10px;">Packhouse &amp; Operations</div>
+        <p style="font-size: 14.5px; color: #3D4A41; margin: 0; line-height: 1.7;">Gat 88, Pimpalgaon Baswant,<br>Nashik District, Maharashtra, India<br>APEDA-registered facility</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section data-screen-label="About CTA" style="max-width: 1240px; margin: 0 auto; padding: 40px 24px 56px;">
+    <div style="background: #14352A; border-radius: 30px; padding: 48px 44px; display: flex; align-items: center; justify-content: space-between; gap: 28px; flex-wrap: wrap;">
+      <div style="max-width: 560px;">
+        <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(26px, 3.2vw, 38px); color: #FCFAF4; margin: 0 0 10px;">Verify us, then talk to us</h2>
+        <p style="font-size: 15px; color: #B9CDBF; margin: 0;">Check every registration number on official portals — then send your first enquiry.</p>
+      </div>
+      <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+        <a href="certifications.html" style="display: inline-flex; align-items: center; background: rgba(252,250,244,0.14); border: 1px solid rgba(252,250,244,0.55); color: #FCFAF4; text-decoration: none; font-size: 15px; font-weight: 600; padding: 14px 28px; border-radius: 999px;" style-hover="background: rgba(252,250,244,0.26);">Certifications</a>
+        <a href="request-a-quote.html" style="display: inline-flex; align-items: center; background: #B8912E; color: #FFFFFF; text-decoration: none; font-size: 15px; font-weight: 600; padding: 14px 28px; border-radius: 999px;" style-hover="background: #D0A93C;">Request a Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <footer data-screen-label="Footer" style="background: #0E271F; color: #B9CDBF; padding: 34px 24px;">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 12.5px; color: #8FA697;">
+      <span>Padmini Resources Indo Africa SARL · IEC 0523098765 · GST 27AAKCP1234F1Z5</span>
+      <a href="index.html" style="color: #B9CDBF; text-decoration: none;" style-hover="color: #FCFAF4;">← Back to home</a>
+      <span>© 2026 All rights reserved.</span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const milestones = [
+      { year: '2012', title: 'Founded', desc: 'First onion containers to the Gulf.' },
+      { year: '2015', title: 'APEDA + fresh produce', desc: 'Grapes and pomegranate programmes begin.' },
+      { year: '2018', title: 'Own packhouse', desc: 'Grading, packing and pre-cooling in-house.' },
+      { year: '2021', title: 'Staples division', desc: 'Rice, pulses, spices and tea added.' },
+      { year: '2024', title: '400+ containers/yr', desc: '23 markets across four regions.' },
+    ];
+    return {
+      waLink: 'https://wa.me/919876543210?text=About%20enquiry',
+      milestones: milestones.map((m, i) => ({ ...m, lineBg: i === milestones.length - 1 ? 'transparent' : '#E6DFD0' })),
+      leaders: [
+        { slotId: 'leader-1', name: 'Founder & Managing Director', role: 'Managing Director', cred: '20+ years in agri-trade; APEDA export council member.', placeholder: 'MD portrait photo' },
+        { slotId: 'leader-2', name: 'Head of Exports', role: 'Export Operations', cred: 'Documentation, logistics and LC negotiation lead.', placeholder: 'Head of Exports portrait' },
+        { slotId: 'leader-3', name: 'Head of Quality', role: 'Quality & Sourcing', cred: 'Food technologist; runs grading, lab and farm audits.', placeholder: 'Head of Quality portrait' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

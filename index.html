@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Padmini Resources Indo Africa SARL — Indian Agricultural Exports</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Archivo:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script src="image-slot.js"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #FAF7F0; -webkit-font-smoothing: antialiased; }
+  </style>
+</helmet>
+
+<div style="font-family: 'Archivo', sans-serif; color: #1C231E; background: #FAF7F0; line-height: 1.55;">
+
+  <!-- ============ 1. STICKY HEADER ============ -->
+  <header data-screen-label="Header" style="position: sticky; top: 0; z-index: 50; background: rgba(250,247,240,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid #E6DFD0;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+      <a href="#top" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #14352A;">
+        <span style="display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; border: 1px solid #E6DFD0; overflow: hidden; flex-shrink: 0;">
+          <img src="assets/logo.png" alt="Padmini Resources logo" style="width: 44px; height: 44px; object-fit: contain;">
+        </span>
+        <span style="display: flex; flex-direction: column;">
+          <span style="font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 21px; letter-spacing: 0.02em; line-height: 1.1; color: #14352A;">PADMINI RESOURCES</span>
+          <span style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; color: #8A8069;">INDO AFRICA SARL</span>
+        </span>
+      </a>
+      <nav style="display: flex; align-items: center; gap: 26px; margin-left: auto; flex-wrap: wrap;">
+        <a href="products.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">Products</a>
+        <a href="certifications.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">Certifications</a>
+        <a href="how-we-export.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">How We Export</a>
+        <a href="about-us.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">About</a>
+        <a href="contact.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">Contact</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="{{ waLink }}" style="display: inline-flex; align-items: center; gap: 8px; background: #1FA362; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 600; padding: 10px 18px; border-radius: 999px;" style-hover="background: #178A52;">
+          <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #C9F2DC;"></span>
+          WhatsApp
+        </a>
+        <a href="request-a-quote.html" style="display: inline-flex; align-items: center; background: #B8912E; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 600; padding: 10px 20px; border-radius: 999px;" style-hover="background: #9E7B24;">Request a Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ 2. HERO ============ -->
+  <section id="top" data-screen-label="Hero" style="position: relative; max-width: 1240px; margin: 0 auto; padding: 28px 24px 0;">
+    <div style="position: relative; border-radius: 28px; overflow: hidden;">
+      <image-slot id="hero-packhouse" shape="rounded" radius="28" placeholder="Packhouse photo — grading &amp; packing line, wide shot" style="display: block; width: 100%; height: 560px;"></image-slot>
+      <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,30,22,0.25) 0%, rgba(10,30,22,0.72) 100%); border-radius: 28px; pointer-events: none;"></div>
+      <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 44px 44px; pointer-events: none;">
+        <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(34px, 5vw, 58px); line-height: 1.08; color: #FCFAF4; margin: 0 0 14px; max-width: 720px; text-wrap: pretty;">Exporters of Fresh Indian Produce &amp; Premium Staples</h1>
+        <p style="font-size: 17px; color: #E3E9DE; margin: 0 0 26px; font-weight: 500;">APEDA &amp; FSSAI certified &nbsp;·&nbsp; Serving 20+ countries since {{ establishedYear }}</p>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap; pointer-events: auto;">
+          <a href="request-a-quote.html" style="display: inline-flex; align-items: center; background: #B8912E; color: #FFFFFF; text-decoration: none; font-size: 15.5px; font-weight: 600; padding: 14px 28px; border-radius: 999px;" style-hover="background: #9E7B24;">Request a Quote</a>
+          <a href="#products" style="display: inline-flex; align-items: center; background: rgba(252,250,244,0.14); border: 1px solid rgba(252,250,244,0.55); color: #FCFAF4; text-decoration: none; font-size: 15.5px; font-weight: 600; padding: 14px 28px; border-radius: 999px;" style-hover="background: rgba(252,250,244,0.26);">Explore Products</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. TRUST BAR ============ -->
+  <section id="certifications" data-screen-label="Trust bar" style="max-width: 1240px; margin: 0 auto; padding: 26px 24px;">
+    <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 22px; padding: 20px 28px; display: flex; align-items: center; justify-content: space-between; gap: 22px; flex-wrap: wrap;">
+      <sc-for list="{{ certs }}" as="cert" hint-placeholder-count="5">
+        <div style="display: flex; align-items: center; gap: 12px; min-width: 170px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: #EFF5EC; color: #0E6B45; font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 17px; flex-shrink: 0;">{{ cert.mark }}</span>
+          <span style="display: flex; flex-direction: column;">
+            <span style="font-weight: 600; font-size: 14px; color: #14352A;">{{ cert.name }}</span>
+            <span style="font-size: 12px; color: #8A8069;">{{ cert.reg }}</span>
+          </span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ============ 4. STATS STRIP ============ -->
+  <section data-screen-label="Stats" style="max-width: 1240px; margin: 0 auto; padding: 22px 24px 10px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+      <div style="background: #14352A; border-radius: 22px; padding: 30px 28px; text-align: center;">
+        <div style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 52px; color: #E8C766; line-height: 1;">{{ yearsExporting }}+</div>
+        <div style="font-size: 13.5px; font-weight: 600; letter-spacing: 0.08em; color: #B9CDBF; margin-top: 8px; text-transform: uppercase;">Years Exporting</div>
+      </div>
+      <div style="background: #14352A; border-radius: 22px; padding: 30px 28px; text-align: center;">
+        <div style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 52px; color: #E8C766; line-height: 1;">23</div>
+        <div style="font-size: 13.5px; font-weight: 600; letter-spacing: 0.08em; color: #B9CDBF; margin-top: 8px; text-transform: uppercase;">Countries Served</div>
+      </div>
+      <div style="background: #14352A; border-radius: 22px; padding: 30px 28px; text-align: center;">
+        <div style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 52px; color: #E8C766; line-height: 1;">400+</div>
+        <div style="font-size: 13.5px; font-weight: 600; letter-spacing: 0.08em; color: #B9CDBF; margin-top: 8px; text-transform: uppercase;">Containers / Year</div>
+      </div>
+      <div style="background: #14352A; border-radius: 22px; padding: 30px 28px; text-align: center;">
+        <div style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 52px; color: #E8C766; line-height: 1;">18</div>
+        <div style="font-size: 13.5px; font-weight: 600; letter-spacing: 0.08em; color: #B9CDBF; margin-top: 8px; text-transform: uppercase;">Product Lines</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. CATEGORY CARDS ============ -->
+  <section id="products" data-screen-label="Product categories" style="max-width: 1240px; margin: 0 auto; padding: 56px 24px 20px;">
+    <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 10px;">What We Export</p>
+    <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 42px); color: #14352A; margin: 0 0 28px; text-wrap: pretty;">Two divisions, one standard of quality</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+
+      <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; overflow: hidden; display: flex; flex-direction: column;">
+        <image-slot id="cat-fresh" shape="rect" placeholder="Fresh produce — grapes / pomegranate crates" style="display: block; width: 100%; height: 300px;"></image-slot>
+        <div style="padding: 28px 30px 30px; display: flex; flex-direction: column; gap: 14px;">
+          <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 30px; color: #14352A; margin: 0;">Fresh Produce</h3>
+          <p style="margin: 0; font-size: 15px; color: #3D4A41;">Table grapes, pomegranate, mango and onion — sourced from registered farms in Maharashtra and packed to importer specification.</p>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <span style="background: #EFF5EC; color: #0E6B45; font-size: 12.5px; font-weight: 600; padding: 6px 14px; border-radius: 999px;">Cold chain</span>
+            <span style="background: #EFF5EC; color: #0E6B45; font-size: 12.5px; font-weight: 600; padding: 6px 14px; border-radius: 999px;">In-season sourcing</span>
+          </div>
+          <a href="fresh-produce.html" style="margin-top: 4px; text-decoration: none; color: #0E6B45; font-weight: 700; font-size: 14.5px;" style-hover="color: #B8912E;">View Products →</a>
+        </div>
+      </div>
+
+      <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; overflow: hidden; display: flex; flex-direction: column;">
+        <image-slot id="cat-staples" shape="rect" placeholder="Staples — rice sacks / spice sorting" style="display: block; width: 100%; height: 300px;"></image-slot>
+        <div style="padding: 28px 30px 30px; display: flex; flex-direction: column; gap: 14px;">
+          <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 30px; color: #14352A; margin: 0;">Staples &amp; Spices</h3>
+          <p style="margin: 0; font-size: 15px; color: #3D4A41;">Basmati and non-basmati rice, pulses, whole spices and orthodox tea — bulk and retail-ready packing with full traceability.</p>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <span style="background: #EFF5EC; color: #0E6B45; font-size: 12.5px; font-weight: 600; padding: 6px 14px; border-radius: 999px;">Bulk supply</span>
+            <span style="background: #EFF5EC; color: #0E6B45; font-size: 12.5px; font-weight: 600; padding: 6px 14px; border-radius: 999px;">Private label</span>
+          </div>
+          <a href="staples-and-spices.html" style="margin-top: 4px; text-decoration: none; color: #0E6B45; font-weight: 700; font-size: 14.5px;" style-hover="color: #B8912E;">View Products →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ 6. SEASONALITY ============ -->
+  <section data-screen-label="Seasonality" style="max-width: 1240px; margin: 0 auto; padding: 48px 24px 20px;">
+    <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 10px;">Plan Your Season</p>
+    <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 42px); color: #14352A; margin: 0 0 26px;">Fresh produce availability</h2>
+    <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; padding: 28px; overflow-x: auto;">
+      <div style="min-width: 760px;">
+        <div style="display: grid; grid-template-columns: 140px repeat(12, 1fr); gap: 6px; align-items: center; margin-bottom: 6px;">
+          <span></span>
+          <sc-for list="{{ months }}" as="m" hint-placeholder-count="12">
+            <span style="text-align: center; font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069;">{{ m }}</span>
+          </sc-for>
+        </div>
+        <sc-for list="{{ crops }}" as="crop" hint-placeholder-count="4">
+          <div style="display: grid; grid-template-columns: 140px repeat(12, 1fr); gap: 6px; align-items: center; margin-bottom: 6px;">
+            <span style="font-weight: 600; font-size: 14.5px; color: #14352A;">{{ crop.name }}</span>
+            <sc-for list="{{ crop.cells }}" as="cell" hint-placeholder-count="12">
+              <span style="display: block; height: 30px; border-radius: 999px; background: {{ cell.bg }};"></span>
+            </sc-for>
+          </div>
+        </sc-for>
+        <div style="display: flex; gap: 20px; margin-top: 16px; align-items: center;">
+          <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; color: #3D4A41;"><span style="width: 22px; height: 12px; border-radius: 999px; background: #1FA362; display: inline-block;"></span> Available for export</span>
+          <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; color: #3D4A41;"><span style="width: 22px; height: 12px; border-radius: 999px; background: #F0EBDD; display: inline-block;"></span> Off season</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 7. CAPABILITIES ============ -->
+  <section data-screen-label="Capabilities" style="max-width: 1240px; margin: 0 auto; padding: 48px 24px 20px;">
+    <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 10px;">Capabilities</p>
+    <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 42px); color: #14352A; margin: 0 0 26px;">Built for reliable, repeat supply</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px;">
+      <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 24px; overflow: hidden;">
+        <image-slot id="cap-coldchain" shape="rect" placeholder="Reefer container being loaded" style="display: block; width: 100%; height: 180px;"></image-slot>
+        <div style="padding: 18px 22px 22px;">
+          <div style="font-weight: 700; font-size: 15.5px; color: #14352A;">Cold Chain &amp; Reefer Logistics</div>
+          <div style="font-size: 13.5px; color: #3D4A41; margin-top: 6px;">Pre-cooling to port, temperature-logged reefers.</div>
+        </div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 24px; overflow: hidden;">
+        <image-slot id="cap-grading" shape="rect" placeholder="Grading &amp; packing line" style="display: block; width: 100%; height: 180px;"></image-slot>
+        <div style="padding: 18px 22px 22px;">
+          <div style="font-weight: 700; font-size: 15.5px; color: #14352A;">In-house Grading &amp; Packing</div>
+          <div style="font-size: 13.5px; color: #3D4A41; margin-top: 6px;">Size, colour and Brix graded to buyer spec.</div>
+        </div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 24px; overflow: hidden;">
+        <image-slot id="cap-oem" shape="rect" placeholder="Branded cartons / retail packs" style="display: block; width: 100%; height: 180px;"></image-slot>
+        <div style="padding: 18px 22px 22px;">
+          <div style="font-weight: 700; font-size: 15.5px; color: #14352A;">Private Label / OEM</div>
+          <div style="font-size: 13.5px; color: #3D4A41; margin-top: 6px;">Your brand on cartons, pouches and retail packs.</div>
+        </div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 24px; overflow: hidden;">
+        <image-slot id="cap-docs" shape="rect" placeholder="Export documents / inspection" style="display: block; width: 100%; height: 180px;"></image-slot>
+        <div style="padding: 18px 22px 22px;">
+          <div style="font-weight: 700; font-size: 15.5px; color: #14352A;">Complete Export Documentation</div>
+          <div style="font-size: 13.5px; color: #3D4A41; margin-top: 6px;">Phyto, COO, COA, BL and pre-shipment inspection.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8. EXPORT PROCESS ============ -->
+  <section id="process" data-screen-label="Export process" style="max-width: 1240px; margin: 0 auto; padding: 48px 24px 20px;">
+    <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 10px;">How We Export</p>
+    <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 42px); color: #14352A; margin: 0 0 26px;">From enquiry to shipment in four steps</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px;">
+      <sc-for list="{{ steps }}" as="step" hint-placeholder-count="4">
+        <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 24px; padding: 26px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 54px; height: 54px; border-radius: 50%; background: #14352A; color: #E8C766; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 26px;">{{ step.n }}</span>
+          <div style="font-weight: 700; font-size: 16px; color: #14352A; margin-top: 16px;">{{ step.title }}</div>
+          <div style="font-size: 13.5px; color: #3D4A41; margin-top: 6px;">{{ step.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ============ 9. COUNTRIES SERVED ============ -->
+  <section id="about" data-screen-label="Countries served" style="max-width: 1240px; margin: 0 auto; padding: 48px 24px 20px;">
+    <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 10px;">Where We Ship</p>
+    <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 42px); color: #14352A; margin: 0 0 26px;">23 markets across four regions</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; align-items: stretch;">
+      <image-slot id="world-map" shape="rounded" radius="26" placeholder="World map graphic — highlighted export markets" style="display: block; width: 100%; min-height: 380px;"></image-slot>
+      <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; padding: 28px 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 22px; align-content: center;">
+        <div>
+          <div style="font-weight: 700; font-size: 13px; letter-spacing: 0.14em; color: #B8912E; text-transform: uppercase; margin-bottom: 10px;">Gulf</div>
+          <div style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: #3D4A41;"><span>UAE</span><span>Saudi Arabia</span><span>Qatar</span><span>Oman</span><span>Kuwait</span><span>Bahrain</span></div>
+        </div>
+        <div>
+          <div style="font-weight: 700; font-size: 13px; letter-spacing: 0.14em; color: #B8912E; text-transform: uppercase; margin-bottom: 10px;">Europe</div>
+          <div style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: #3D4A41;"><span>Netherlands</span><span>United Kingdom</span><span>Germany</span><span>Belgium</span></div>
+        </div>
+        <div>
+          <div style="font-weight: 700; font-size: 13px; letter-spacing: 0.14em; color: #B8912E; text-transform: uppercase; margin-bottom: 10px;">Southeast Asia</div>
+          <div style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: #3D4A41;"><span>Malaysia</span><span>Singapore</span><span>Vietnam</span><span>Indonesia</span></div>
+        </div>
+        <div>
+          <div style="font-weight: 700; font-size: 13px; letter-spacing: 0.14em; color: #B8912E; text-transform: uppercase; margin-bottom: 10px;">Africa</div>
+          <div style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: #3D4A41;"><span>DR Congo</span><span>Kenya</span><span>Ghana</span><span>Côte d'Ivoire</span><span>Senegal</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 10. TESTIMONIALS ============ -->
+  <section data-screen-label="Testimonials" style="max-width: 1240px; margin: 0 auto; padding: 48px 24px 20px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+      <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; padding: 34px 36px;">
+        <div style="font-family: 'Cormorant Garamond', serif; font-size: 46px; line-height: 0.6; color: #B8912E;">“</div>
+        <p style="font-size: 16.5px; color: #1C231E; margin: 14px 0 22px; text-wrap: pretty;">Three seasons of grapes without a single rejected consignment. Documentation is always ready before the vessel sails — that is rare.</p>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: #EFF5EC; font-size: 20px;">🇳🇱</span>
+          <span style="display: flex; flex-direction: column;">
+            <span style="font-weight: 700; font-size: 14px; color: #14352A;">Fresh-produce importer, Netherlands</span>
+            <span style="font-size: 12.5px; color: #8A8069;">Table grapes · Pomegranate</span>
+          </span>
+        </div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; padding: 34px 36px;">
+        <div style="font-family: 'Cormorant Garamond', serif; font-size: 46px; line-height: 0.6; color: #B8912E;">“</div>
+        <p style="font-size: 16.5px; color: #1C231E; margin: 14px 0 22px; text-wrap: pretty;">They handle our private-label rice programme end to end — packing, inspection, LC terms. Consistent grain quality container after container.</p>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: #EFF5EC; font-size: 20px;">🇦🇪</span>
+          <span style="display: flex; flex-direction: column;">
+            <span style="font-weight: 700; font-size: 14px; color: #14352A;">Wholesale distributor, UAE</span>
+            <span style="font-size: 12.5px; color: #8A8069;">Basmati rice · Spices</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 11. FACILITY GALLERY ============ -->
+  <section data-screen-label="Facility gallery" style="max-width: 1240px; margin: 0 auto; padding: 48px 24px 20px;">
+    <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 10px;">Our Facilities</p>
+    <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 42px); color: #14352A; margin: 0 0 26px;">Inside the packhouse</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+      <image-slot id="gal-1" shape="rounded" radius="22" placeholder="Sorting line" style="display: block; width: 100%; height: 240px;"></image-slot>
+      <image-slot id="gal-2" shape="rounded" radius="22" placeholder="Pre-cooling chamber" style="display: block; width: 100%; height: 240px;"></image-slot>
+      <image-slot id="gal-3" shape="rounded" radius="22" placeholder="Carton stacking" style="display: block; width: 100%; height: 240px;"></image-slot>
+      <image-slot id="gal-4" shape="rounded" radius="22" placeholder="Quality lab / Brix testing" style="display: block; width: 100%; height: 240px;"></image-slot>
+      <image-slot id="gal-5" shape="rounded" radius="22" placeholder="Container loading" style="display: block; width: 100%; height: 240px;"></image-slot>
+      <image-slot id="gal-6" shape="rounded" radius="22" placeholder="Sealed reefer at gate" style="display: block; width: 100%; height: 240px;"></image-slot>
+    </div>
+  </section>
+
+  <!-- ============ 12. FINAL CTA ============ -->
+  <section id="contact" data-screen-label="Final CTA" style="max-width: 1240px; margin: 0 auto; padding: 48px 24px;">
+    <div style="background: #14352A; border-radius: 30px; padding: 60px 44px; text-align: center;">
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(30px, 4vw, 46px); color: #FCFAF4; margin: 0 auto 14px; max-width: 640px; text-wrap: pretty;">Tell us your product and destination — get a quote within 24 hours</h2>
+      <p style="font-size: 15.5px; color: #B9CDBF; margin: 0 0 30px;">Send your specification, volume and port of discharge. We reply with a firm offer.</p>
+      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+        <a href="request-a-quote.html" style="display: inline-flex; align-items: center; background: #B8912E; color: #FFFFFF; text-decoration: none; font-size: 15.5px; font-weight: 600; padding: 15px 30px; border-radius: 999px;" style-hover="background: #D0A93C;">Request a Quote</a>
+        <a href="{{ waLink }}" style="display: inline-flex; align-items: center; gap: 8px; background: #1FA362; color: #FFFFFF; text-decoration: none; font-size: 15.5px; font-weight: 600; padding: 15px 30px; border-radius: 999px;" style-hover="background: #178A52;">
+          <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #C9F2DC;"></span>
+          Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 13. FOOTER ============ -->
+  <footer data-screen-label="Footer" style="background: #0E271F; color: #B9CDBF; padding: 56px 24px 28px;">
+    <div style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 36px;">
+      <div>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 50%; background: #FFFFFF; overflow: hidden;">
+            <img src="assets/logo.png" alt="Padmini Resources logo" style="width: 38px; height: 38px; object-fit: contain;">
+          </span>
+          <span style="font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 19px; color: #FCFAF4; line-height: 1.15;">Padmini Resources<br>Indo Africa SARL</span>
+        </div>
+        <p style="font-size: 13.5px; margin: 0; line-height: 1.7;">Plot 14, MIDC Agro Export Zone,<br>Nashik 422 010, Maharashtra, India</p>
+      </div>
+      <div>
+        <div style="font-weight: 700; font-size: 12.5px; letter-spacing: 0.16em; color: #E8C766; text-transform: uppercase; margin-bottom: 14px;">Registration</div>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13.5px;">
+          <span>IEC No. 0523098765</span>
+          <span>GST No. 27AAKCP1234F1Z5</span>
+          <span>APEDA RCMC 154321</span>
+          <span>FSSAI Lic. 10023045000789</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight: 700; font-size: 12.5px; letter-spacing: 0.16em; color: #E8C766; text-transform: uppercase; margin-bottom: 14px;">Quick Links</div>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13.5px;">
+          <a href="products.html" style="color: #B9CDBF; text-decoration: none;" style-hover="color: #FCFAF4;">Products</a>
+          <a href="certifications.html" style="color: #B9CDBF; text-decoration: none;" style-hover="color: #FCFAF4;">Certifications</a>
+          <a href="how-we-export.html" style="color: #B9CDBF; text-decoration: none;" style-hover="color: #FCFAF4;">How We Export</a>
+          <a href="contact.html" style="color: #B9CDBF; text-decoration: none;" style-hover="color: #FCFAF4;">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight: 700; font-size: 12.5px; letter-spacing: 0.16em; color: #E8C766; text-transform: uppercase; margin-bottom: 14px;">Contact</div>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13.5px;">
+          <a href="mailto:exports@padminiresources.com" style="color: #B9CDBF; text-decoration: none;" style-hover="color: #FCFAF4;">exports@padminiresources.com</a>
+          <a href="tel:+919876543210" style="color: #B9CDBF; text-decoration: none;" style-hover="color: #FCFAF4;">+91 98765 43210</a>
+          <a href="{{ waLink }}" style="color: #B9CDBF; text-decoration: none;" style-hover="color: #FCFAF4;">WhatsApp Business</a>
+        </div>
+      </div>
+    </div>
+    <div style="max-width: 1240px; margin: 36px auto 0; padding-top: 22px; border-top: 1px solid rgba(185,205,191,0.22); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 12.5px; color: #8FA697;">
+      <span>IEC · APEDA · FSSAI · Spices Board · ISO 22000 · HACCP certified</span>
+      <span>© 2026 Padmini Resources Indo Africa SARL. All rights reserved.</span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;establishedYear&quot;: {&quot;editor&quot;: &quot;int&quot;, &quot;default&quot;: 2012, &quot;tsType&quot;: &quot;number&quot;, &quot;min&quot;: 1980, &quot;max&quot;: 2026, &quot;section&quot;: &quot;Company&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const establishedYear = this.props.establishedYear ?? 2012;
+    const avail = {
+      Grapes:      [1,1,1,1,0,0,0,0,0,0,0,1],
+      Pomegranate: [1,1,1,1,0,0,0,1,1,1,1,1],
+      Mango:       [0,0,1,1,1,1,1,0,0,0,0,0],
+      Onion:       [1,1,1,1,1,1,0,0,0,1,1,1],
+    };
+    return {
+      waLink: 'https://wa.me/919876543210',
+      establishedYear,
+      yearsExporting: 2026 - establishedYear,
+      months: ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'],
+      crops: Object.keys(avail).map((name) => ({
+        name,
+        cells: avail[name].map((v) => ({ bg: v ? '#1FA362' : '#F0EBDD' })),
+      })),
+      certs: [
+        { mark: 'IEC', name: 'Import Export Code', reg: 'IEC 0523098765' },
+        { mark: 'AP', name: 'APEDA', reg: 'RCMC 154321' },
+        { mark: 'FS', name: 'FSSAI', reg: 'Lic. 10023045000789' },
+        { mark: 'SB', name: 'Spices Board', reg: 'CRES 8877/2020' },
+        { mark: 'ISO', name: 'ISO 22000 / HACCP', reg: 'Cert. IN-22K-4410' },
+      ],
+      steps: [
+        { n: '1', title: 'Enquiry', desc: 'Share product, spec, volume and destination port.' },
+        { n: '2', title: 'Sample', desc: 'Pre-shipment sample couriered for your approval.' },
+        { n: '3', title: 'Contract & LC/TT Payment', desc: 'Sales contract signed; LC at sight or TT terms.' },
+        { n: '4', title: 'Shipment with Full Documents', desc: 'Loading, inspection, and complete document set.' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

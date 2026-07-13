@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>How We Export — Padmini Resources Indo Africa SARL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Archivo:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #FAF7F0; -webkit-font-smoothing: antialiased; }
+  </style>
+</helmet>
+
+<div style="font-family: 'Archivo', sans-serif; color: #1C231E; background: #FAF7F0; line-height: 1.55;">
+
+  <!-- ============ STICKY HEADER ============ -->
+  <header data-screen-label="Header" style="position: sticky; top: 0; z-index: 50; background: rgba(250,247,240,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid #E6DFD0;">
+    <div style="max-width: 1240px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+      <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #14352A;">
+        <span style="display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; border: 1px solid #E6DFD0; overflow: hidden; flex-shrink: 0;">
+          <img src="assets/logo.png" alt="Padmini Resources logo" style="width: 44px; height: 44px; object-fit: contain;">
+        </span>
+        <span style="display: flex; flex-direction: column;">
+          <span style="font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 21px; letter-spacing: 0.02em; line-height: 1.1; color: #14352A;">PADMINI RESOURCES</span>
+          <span style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; color: #8A8069;">INDO AFRICA SARL</span>
+        </span>
+      </a>
+      <nav style="display: flex; align-items: center; gap: 26px; margin-left: auto; flex-wrap: wrap;">
+        <a href="products.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">Products</a>
+        <a href="certifications.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">Certifications</a>
+        <a href="how-we-export.html" style="text-decoration: none; color: #0E6B45; font-size: 14.5px; font-weight: 700;">How We Export</a>
+        <a href="about-us.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">About</a>
+        <a href="contact.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">Contact</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <a href="{{ waLink }}" style="display: inline-flex; align-items: center; gap: 8px; background: #1FA362; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 600; padding: 10px 18px; border-radius: 999px;" style-hover="background: #178A52;">
+          <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #C9F2DC;"></span>
+          WhatsApp
+        </a>
+        <a href="request-a-quote.html" style="display: inline-flex; align-items: center; background: #B8912E; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 600; padding: 10px 20px; border-radius: 999px;" style-hover="background: #9E7B24;">Request a Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ PAGE INTRO ============ -->
+  <section data-screen-label="Intro" style="max-width: 1240px; margin: 0 auto; padding: 52px 24px 8px;">
+    <div style="max-width: 720px;">
+      <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 10px;">How We Export</p>
+      <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(34px, 4.4vw, 52px); color: #14352A; margin: 0 0 12px; line-height: 1.08;">A process you can see before you commit</h1>
+      <p style="font-size: 16px; color: #3D4A41; margin: 0; text-wrap: pretty;">From first enquiry to documents in your inbox — nine defined steps, standard payment instruments, and a complete document set with every consignment.</p>
+    </div>
+  </section>
+
+  <!-- ============ 9-STEP TIMELINE ============ -->
+  <section data-screen-label="Process timeline" style="max-width: 1240px; margin: 0 auto; padding: 36px 24px 20px;">
+    <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; padding: 30px 26px; overflow-x: auto;">
+      <div style="display: flex; gap: 0; min-width: 1120px;">
+        <sc-for list="{{ steps }}" as="step" hint-placeholder-count="9">
+          <div style="flex: 1; position: relative; padding: 0 14px;">
+            <div style="display: flex; align-items: center;">
+              <span style="display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%; background: #14352A; color: #E8C766; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 22px; flex-shrink: 0; z-index: 1;">{{ step.n }}</span>
+              <span style="flex: 1; height: 2px; background: {{ step.lineBg }};"></span>
+            </div>
+            <div style="font-weight: 700; font-size: 14px; color: #14352A; margin-top: 14px;">{{ step.title }}</div>
+            <div style="font-size: 12.5px; color: #3D4A41; margin-top: 5px; padding-right: 6px;">{{ step.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DOCUMENTATION CHECKLIST ============ -->
+  <section data-screen-label="Documentation" style="max-width: 1240px; margin: 0 auto; padding: 40px 24px 20px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; align-items: stretch;">
+      <div>
+        <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 10px;">Documentation</p>
+        <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 40px); color: #14352A; margin: 0 0 14px;">Every consignment ships with a complete document set</h2>
+        <p style="font-size: 15px; color: #3D4A41; margin: 0; max-width: 480px;">Scanned copies are emailed before the vessel arrives; originals travel by courier or through your bank under LC terms.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; padding: 28px 30px; display: flex; flex-direction: column; gap: 14px;">
+        <sc-for list="{{ documents }}" as="doc" hint-placeholder-count="6">
+          <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <span style="display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; background: #EFF5EC; color: #0E6B45; font-size: 14px; font-weight: 700; flex-shrink: 0;">✓</span>
+            <span style="display: flex; flex-direction: column;">
+              <span style="font-weight: 700; font-size: 14.5px; color: #14352A;">{{ doc.name }}</span>
+              <span style="font-size: 13px; color: #3D4A41;">{{ doc.note }}</span>
+            </span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PAYMENT TERMS ============ -->
+  <section data-screen-label="Payment terms" style="max-width: 1240px; margin: 0 auto; padding: 40px 24px 20px;">
+    <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 10px;">Payment Terms</p>
+    <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 40px); color: #14352A; margin: 0 0 26px;">Standard instruments, no surprises</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+      <div style="background: #14352A; border-radius: 26px; padding: 34px 36px;">
+        <span style="display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 20px; border-radius: 999px; background: rgba(232,199,102,0.14); color: #E8C766; font-weight: 700; font-size: 14px; letter-spacing: 0.08em;">LC AT SIGHT</span>
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 26px; color: #FCFAF4; margin: 18px 0 10px;">Letter of Credit</h3>
+        <p style="font-size: 14.5px; color: #B9CDBF; margin: 0 0 16px;">Your bank releases payment only against the shipping documents named in the LC. Neither side carries open risk — the standard instrument for first transactions.</p>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13.5px; color: #B9CDBF;">
+          <span>· Irrevocable LC from a recognised bank</span>
+          <span>· Documents negotiated through your bank</span>
+          <span>· Best for new relationships and large volumes</span>
+        </div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; padding: 34px 36px;">
+        <span style="display: inline-flex; align-items: center; justify-content: center; height: 40px; padding: 0 20px; border-radius: 999px; background: #EFF5EC; color: #0E6B45; font-weight: 700; font-size: 14px; letter-spacing: 0.08em;">TT — WIRE TRANSFER</span>
+        <h3 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 26px; color: #14352A; margin: 18px 0 10px;">Telegraphic Transfer</h3>
+        <p style="font-size: 14.5px; color: #3D4A41; margin: 0 0 16px;">A simple advance-and-balance structure: part payment to confirm the order, balance against scanned shipping documents. Faster and cheaper than an LC.</p>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13.5px; color: #3D4A41;">
+          <span>· Typically 30% advance · 70% against documents</span>
+          <span>· Lower bank charges, quicker turnaround</span>
+          <span>· Preferred by repeat buyers</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INCOTERMS ============ -->
+  <section data-screen-label="Incoterms" style="max-width: 1240px; margin: 0 auto; padding: 40px 24px 20px;">
+    <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 10px;">Incoterms We Quote</p>
+    <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 40px); color: #14352A; margin: 0 0 26px;">FOB, CIF or CFR — your choice</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px;">
+      <sc-for list="{{ incoterms }}" as="term" hint-placeholder-count="3">
+        <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 24px; padding: 28px 30px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 62px; height: 62px; border-radius: 50%; background: #EFF5EC; color: #0E6B45; font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 20px;">{{ term.code }}</span>
+          <div style="font-weight: 700; font-size: 16px; color: #14352A; margin-top: 16px;">{{ term.name }}</div>
+          <div style="font-size: 13.5px; color: #3D4A41; margin-top: 6px;">{{ term.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin-top: 18px; background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 22px; padding: 18px 26px; display: flex; gap: 26px; flex-wrap: wrap; font-size: 13.5px; color: #3D4A41;">
+      <span><strong style="color: #14352A;">Ports of loading:</strong> Nhava Sheva (JNPT) · Mundra · Mumbai Air Cargo</span>
+      <span><strong style="color: #14352A;">Indicative transit:</strong> Gulf 5–9 days · Europe 18–24 days · SE Asia 10–16 days · East Africa 12–18 days</span>
+    </div>
+  </section>
+
+  <!-- ============ FIRST-TIME IMPORTER BLOCK ============ -->
+  <section data-screen-label="First time importing" style="max-width: 1240px; margin: 0 auto; padding: 40px 24px 56px;">
+    <div style="background: #14352A; border-radius: 30px; padding: 52px 44px;">
+      <div style="max-width: 680px;">
+        <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #E8C766; text-transform: uppercase; margin: 0 0 10px;">New to Indian Imports?</p>
+        <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(28px, 3.6vw, 42px); color: #FCFAF4; margin: 0 0 14px; text-wrap: pretty;">First time importing from India? We walk you through it.</h2>
+        <p style="font-size: 15px; color: #B9CDBF; margin: 0 0 28px;">Most of our long-term buyers started with a single trial container. Here is what we handle so you don't have to guess:</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px;">
+        <sc-for list="{{ reassurance }}" as="item" hint-placeholder-count="4">
+          <div style="background: rgba(252,250,244,0.06); border: 1px solid rgba(185,205,191,0.22); border-radius: 22px; padding: 22px 24px;">
+            <div style="font-weight: 700; font-size: 15px; color: #FCFAF4;">{{ item.title }}</div>
+            <div style="font-size: 13.5px; color: #B9CDBF; margin-top: 6px;">{{ item.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-top: 30px;">
+        <a href="request-a-quote.html" style="display: inline-flex; align-items: center; background: #B8912E; color: #FFFFFF; text-decoration: none; font-size: 15px; font-weight: 600; padding: 14px 28px; border-radius: 999px;" style-hover="background: #D0A93C;">Start with a Quote</a>
+        <a href="{{ waLink }}" style="display: inline-flex; align-items: center; gap: 8px; background: #1FA362; color: #FFFFFF; text-decoration: none; font-size: 15px; font-weight: 600; padding: 14px 28px; border-radius: 999px;" style-hover="background: #178A52;">
+          <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #C9F2DC;"></span>
+          Ask on WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER (compact) ============ -->
+  <footer data-screen-label="Footer" style="background: #0E271F; color: #B9CDBF; padding: 34px 24px;">
+    <div style="max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 12.5px; color: #8FA697;">
+      <span>Padmini Resources Indo Africa SARL · IEC 0523098765 · GST 27AAKCP1234F1Z5</span>
+      <a href="index.html" style="color: #B9CDBF; text-decoration: none;" style-hover="color: #FCFAF4;">← Back to home</a>
+      <span>© 2026 All rights reserved.</span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const steps = [
+      { n: '1', title: 'Enquiry', desc: 'Product, spec, volume, destination port.' },
+      { n: '2', title: 'Quote', desc: 'Firm offer within 24 hours.' },
+      { n: '3', title: 'Sample', desc: 'Couriered for approval; buyer pays courier.' },
+      { n: '4', title: 'Contract', desc: 'Sales contract with agreed spec and terms.' },
+      { n: '5', title: 'Payment terms', desc: 'LC at sight or TT advance/balance.' },
+      { n: '6', title: 'Procurement', desc: 'Sourcing from registered farms and mills.' },
+      { n: '7', title: 'QC', desc: 'Inspection, lab testing, pre-shipment check.' },
+      { n: '8', title: 'Shipment', desc: 'Container stuffing, sealed and dispatched.' },
+      { n: '9', title: 'Documents', desc: 'Full document set to you or your bank.' },
+    ];
+    return {
+      waLink: 'https://wa.me/919876543210?text=Export%20process%20enquiry',
+      steps: steps.map((s, i) => ({ ...s, lineBg: i === steps.length - 1 ? 'transparent' : '#E6DFD0' })),
+      documents: [
+        { name: 'Commercial Invoice', note: 'Contract value, terms and consignee details.' },
+        { name: 'Packing List', note: 'Carton counts, weights and pallet map.' },
+        { name: 'Bill of Lading', note: 'Original B/L or seaway bill as agreed.' },
+        { name: 'Certificate of Origin', note: 'Chamber-attested; preferential COO where applicable.' },
+        { name: 'Phytosanitary Certificate', note: 'Issued by Plant Quarantine for all fresh produce.' },
+        { name: 'Health / Lab Certificates', note: 'COA, residue and microbiological reports as applicable.' },
+      ],
+      incoterms: [
+        { code: 'FOB', name: 'Free On Board', desc: 'We deliver loaded on the vessel at the Indian port; freight and insurance are yours from there.' },
+        { code: 'CIF', name: 'Cost, Insurance & Freight', desc: 'We pay ocean freight and marine insurance to your named port — one landed price.' },
+        { code: 'CFR', name: 'Cost & Freight', desc: 'We pay freight to your port; you arrange insurance. A common middle ground.' },
+      ],
+      reassurance: [
+        { title: 'Documentation done for you', desc: 'We prepare every certificate your customs authority will ask for — you receive scans before arrival.' },
+        { title: 'Trial-size first orders', desc: 'Start with one container — or an air-freight trial for fresh produce — before committing to a programme.' },
+        { title: 'Verify us independently', desc: 'Our IEC, GST, APEDA and FSSAI numbers can be checked on official Indian government portals.' },
+        { title: 'One point of contact', desc: 'A named export manager on email and WhatsApp from enquiry to delivery — no call centres.' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
