@@ -64,7 +64,7 @@
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;">
       <sc-for list="{{ certificates }}" as="cert" hint-placeholder-count="8">
         <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; overflow: hidden; display: flex; flex-direction: column;">
-          <image-slot id="{{ cert.slotId }}" shape="rect" placeholder="{{ cert.placeholder }}" style="display: block; width: 100%; height: 200px;"></image-slot>
+          <image-slot id="{{ cert.slotId }}" shape="rect" src="{{ cert.img }}" placeholder="{{ cert.placeholder }}" style="display: block; width: 100%; height: 200px;"></image-slot>
           <div style="padding: 22px 26px 26px; display: flex; flex-direction: column; gap: 10px; flex: 1;">
             <div style="display: flex; align-items: center; gap: 12px;">
               <span style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: #EFF5EC; color: #0E6B45; font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 16px; flex-shrink: 0;">{{ cert.mark }}</span>
@@ -78,7 +78,10 @@
               {{ cert.reg }}
             </div>
             <p style="margin: 2px 0 0; font-size: 13.5px; color: #3D4A41;">{{ cert.buyerLine }}</p>
-            <span style="font-size: 12px; color: #8A8069; margin-top: auto;">{{ cert.validity }}</span>
+            <span style="font-size: 12px; color: #8A8069;">{{ cert.validity }}</span>
+            <sc-if value="{{ cert.pdfHref }}" hint-placeholder-val="{{ true }}">
+              <a href="{{ cert.pdfHref }}" target="_blank" rel="noopener noreferrer" style="margin-top: auto; align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; color: #0E6B45; text-decoration: none;" style-hover="color: #178A52;">View certificate (PDF) →</a>
+            </sc-if>
           </div>
         </div>
       </sc-for>
@@ -119,10 +122,12 @@ class Component extends DCLogic {
     return {
       waLink: 'https://wa.me/919767766731?text=Certificate%20copies%20request',
       certificates: [
-        { slotId: 'cert-iec', mark: 'IEC', name: 'Import Export Code', issuer: 'DGFT, Ministry of Commerce, Govt. of India', reg: 'IEC 0523098765', buyerLine: 'Confirms we are a legally registered Indian exporter authorised for cross-border trade.', validity: 'Permanent registration', placeholder: 'IEC certificate scan' },
-        { slotId: 'cert-apeda', mark: 'AP', name: 'APEDA RCMC', issuer: 'Agricultural & Processed Food Products Export Development Authority', reg: 'RCMC 154321', buyerLine: 'Registers us with India\u2019s apex agri-export authority — required for fresh produce export.', validity: 'Valid through Mar 2029', placeholder: 'APEDA RCMC certificate scan' },
+        { slotId: 'cert-iec', mark: 'IEC', name: 'Import Export Code', issuer: 'DGFT, Ministry of Commerce, Govt. of India', reg: 'IEC AAMCP9797N', buyerLine: 'Confirms we are a legally registered Indian exporter authorised for cross-border trade.', validity: 'Permanent registration · issued 09 Aug 2022', placeholder: 'IEC certificate scan', img: 'images/certificates/iec-certificate.png', pdfHref: 'certificates/iec-certificate.pdf' },
+        { slotId: 'cert-incorp', mark: 'COI', name: 'Certificate of Incorporation', issuer: 'Ministry of Corporate Affairs, Govt. of India', reg: 'CIN U01122PN2022PTC212004', buyerLine: 'Confirms Padmini Resources India Private Limited is a legally incorporated company.', validity: 'Incorporated 13 Jun 2022', placeholder: 'Certificate of Incorporation scan', img: 'images/certificates/certificate-of-incorporation.png', pdfHref: 'certificates/certificate-of-incorporation.pdf' },
+        { slotId: 'cert-apeda', mark: 'AP', name: 'APEDA RCMC', issuer: 'Agricultural & Processed Food Products Export Development Authority', reg: 'RCMC 220555', buyerLine: 'Registers us with India\u2019s apex agri-export authority — required for fresh produce export.', validity: 'Valid through Sep 2027', placeholder: 'APEDA RCMC certificate scan', img: 'images/certificates/apeda-rcmc-certificate.png', pdfHref: 'certificates/apeda-rcmc-certificate.pdf' },
         { slotId: 'cert-fssai', mark: 'FS', name: 'FSSAI Central License', issuer: 'Food Safety & Standards Authority of India', reg: 'Lic. 10023045000789', buyerLine: 'Certifies our facility and products meet India\u2019s national food-safety standards.', validity: 'Valid through Nov 2027', placeholder: 'FSSAI license scan' },
-        { slotId: 'cert-gst', mark: 'GST', name: 'GST Registration', issuer: 'Goods & Services Tax Network, Govt. of India', reg: 'GSTIN 27AAKCP1234F1Z5', buyerLine: 'Verifies our tax identity — check it live on the official GST portal.', validity: 'Active registration', placeholder: 'GST certificate scan' },
+        { slotId: 'cert-gst', mark: 'GST', name: 'GST Registration', issuer: 'Goods & Services Tax Network, Govt. of India', reg: 'GSTIN 27AAMCP9797N2Z1', buyerLine: 'Verifies our tax identity — check it live on the official GST portal.', validity: 'Active registration · issued 25 Jun 2026', placeholder: 'GST certificate scan', img: 'images/certificates/gst-certificate.png', pdfHref: 'certificates/gst-certificate.pdf' },
+        { slotId: 'cert-shopact', mark: 'SA', name: 'Shop & Establishment Registration', issuer: 'Government of Maharashtra (Shop Act)', reg: 'App ID 106191492203', buyerLine: 'Confirms our business premises are registered under Maharashtra’s Shops & Establishments Act.', validity: 'Registered 24 Jun 2022', placeholder: 'Shop Act registration scan', img: 'images/certificates/shop-act-certificate.png' },
         { slotId: 'cert-iso', mark: 'ISO', name: 'ISO 22000 / HACCP', issuer: 'Accredited certification body', reg: 'Cert. IN-22K-4410', buyerLine: 'Independent audit of our food-safety management system, from intake to dispatch.', validity: 'Valid through Aug 2027 · annual surveillance', placeholder: 'ISO 22000 certificate scan' },
         { slotId: 'cert-spices', mark: 'SB', name: 'Spices Board Registration', issuer: 'Spices Board of India, Ministry of Commerce', reg: 'CRES 8877/2020', buyerLine: 'Mandatory registration for exporting Indian spices — covers our whole-spice lines.', validity: 'Valid through Jun 2028', placeholder: 'Spices Board CRES scan' },
         { slotId: 'cert-gap', mark: 'GG', name: 'GlobalG.A.P. Sourcing', issuer: 'Via registered partner farms', reg: 'GGN available per consignment', buyerLine: 'Fresh produce sourced from GlobalG.A.P.-certified farms with residue monitoring.', validity: 'Farm certificates shared per shipment', placeholder: 'GlobalG.A.P. farm certificate scan' },

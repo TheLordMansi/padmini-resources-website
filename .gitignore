@@ -1,3 +1,6 @@
 node_modules/
 npm-debug.log*
 .netlify/
+
+# Shop Act PDF stays local only — page 2 contains Aadhaar numbers
+certificates/shop-act-certificate.pdf
