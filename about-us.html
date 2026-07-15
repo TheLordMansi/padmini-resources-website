@@ -86,15 +86,47 @@
     <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 10px;">Leadership</p>
     <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 40px); color: #14352A; margin: 0 0 12px;">The people you'll be dealing with</h2>
     <p style="font-size: 15px; color: #3D4A41; margin: 0 0 26px; max-width: 620px;">Buyers wire money to identifiable people. Here are ours — reachable directly by email and WhatsApp.</p>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px;">
-      <sc-for list="{{ leaders }}" as="person" hint-placeholder-count="3">
-        <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; padding: 30px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px;">
-          <img src="{{ person.photo }}" alt="{{ person.name }}" style="display: block; width: 130px; height: 130px; border-radius: 50%; object-fit: cover; object-position: center top; border: 3px solid #E6DFD0; margin-bottom: 12px;">
-          <span style="font-weight: 700; font-size: 17px; color: #14352A;">{{ person.name }}</span>
-          <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.08em; color: #B8912E; text-transform: uppercase;">{{ person.role }}</span>
-          <span style="font-size: 13.5px; color: #3D4A41;">{{ person.cred }}</span>
+    <div style="display: flex; flex-direction: column; gap: 22px;">
+
+      <!-- Person 1: photo left, info right -->
+      <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; padding: 26px; display: flex; flex-wrap: wrap; align-items: center; gap: 30px;">
+        <div style="display: flex; align-items: center; justify-content: center; flex: 1 1 320px; max-width: 380px; width: 100%; aspect-ratio: 1 / 1; border-radius: 20px; border: 1px solid #E6DFD0; background: #FAF7F0; overflow: hidden;">
+          <img src="images/team-sachin-patil.png" alt="Dr. Sachin Patil" style="display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;">
         </div>
-      </sc-for>
+        <div style="flex: 2 1 380px; min-width: 0;">
+          <p style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-style: italic; font-size: clamp(19px, 2.2vw, 24px); color: #14352A; margin: 0 0 16px; line-height: 1.35;">"Fearless Vision, Global Trust: Redefining Leadership Across Seas and Supply Chains"</p>
+          <span style="display: block; font-weight: 700; font-size: 18px; color: #14352A;">Dr. Sachin Patil</span>
+          <span style="display: block; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; color: #B8912E; text-transform: uppercase; margin: 4px 0 12px;">Director</span>
+          <p style="font-size: 14.5px; color: #3D4A41; margin: 0; line-height: 1.7; text-wrap: pretty;">The embodiment of innovative leadership, marked by a fearless entrepreneurial spirit. He holds Doctorate degrees in Management, reflecting a strong academic foundation. His experience includes over five years of mentoring supply chain of agricultural products over the seas. As a visionary, he is committed to fostering global networks based on trust, shaping our company's ethos towards collaborative and respectful international partnerships.</p>
+        </div>
+      </div>
+
+      <!-- Person 2: photo right, info left -->
+      <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; padding: 26px; display: flex; flex-wrap: wrap-reverse; align-items: center; gap: 30px;">
+        <div style="flex: 2 1 380px; min-width: 0;">
+          <p style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-style: italic; font-size: clamp(19px, 2.2vw, 24px); color: #14352A; margin: 0 0 16px; line-height: 1.35;">"Strategic Vision, People-First Leadership: Driving Global Business Through HR Excellence"</p>
+          <span style="display: block; font-weight: 700; font-size: 18px; color: #14352A;">Mrs. Padmini Patil</span>
+          <span style="display: block; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; color: #B8912E; text-transform: uppercase; margin: 4px 0 12px;">Director</span>
+          <p style="font-size: 14.5px; color: #3D4A41; margin: 0; line-height: 1.7; text-wrap: pretty;">Mrs. Padmini is a Director of our Company. She passed the examination of Bachelor of Business Administration HR &amp; Marketing from Shivaji University and Master of Business Administration from the SPPU University. She was associated for more than 10 years with Pratap Chemical, a large scale exporter of chemicals from Mumbai. She has an experience of around 15 years in HR and international business. She drives the organization's goals and visions with a keen eye on industry trends and business strategies. She looks after marketing and administration activities of the company.</p>
+        </div>
+        <div style="display: flex; align-items: center; justify-content: center; flex: 1 1 320px; max-width: 380px; width: 100%; aspect-ratio: 1 / 1; border-radius: 20px; border: 1px solid #E6DFD0; background: #FAF7F0; overflow: hidden;">
+          <img src="images/team-padmini-patil.png" alt="Mrs. Padmini Patil" style="display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;">
+        </div>
+      </div>
+
+      <!-- Person 3: photo left, info right -->
+      <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; padding: 26px; display: flex; flex-wrap: wrap; align-items: center; gap: 30px;">
+        <div style="display: flex; align-items: center; justify-content: center; flex: 1 1 320px; max-width: 380px; width: 100%; aspect-ratio: 1 / 1; border-radius: 20px; border: 1px solid #E6DFD0; background: #FAF7F0; overflow: hidden;">
+          <img src="images/team-wonegou-kokou-edem.png" alt="Mr. Wonegou Kokou Edem" style="display: block; max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain;">
+        </div>
+        <div style="flex: 2 1 380px; min-width: 0;">
+          <p style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-style: italic; font-size: clamp(19px, 2.2vw, 24px); color: #14352A; margin: 0 0 16px; line-height: 1.35;">"Precision in Procurement, Excellence in Execution: Powering Global Supply Chains"</p>
+          <span style="display: block; font-weight: 700; font-size: 18px; color: #14352A;">Mr. Wonegou Kokou Edem</span>
+          <span style="display: block; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; color: #B8912E; text-transform: uppercase; margin: 4px 0 12px;">Manager · Procurement, Logistics &amp; Supply Chain</span>
+          <p style="font-size: 14.5px; color: #3D4A41; margin: 0; line-height: 1.7; text-wrap: pretty;">Mr. Wonegou Kokou Edem is the Procurement Officer at Padmini Resources Indo Africa SARL. He is a management post graduate majoring in accounts and supply chain and holds more than 15 years of experience in supply chain, marketing &amp; operations. Over the years, he has played diverse roles as a procurement manager, expert in logistics management, and many more. His leadership and perspectives truly shape the strategies and directions of Padmini Resources Indo Africa SARL's endeavors as the organization gradually becomes global.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -155,26 +187,6 @@ class Component extends DCLogic {
     return {
       waLink: 'https://wa.me/919767766731?text=About%20enquiry',
       milestones: milestones.map((m, i) => ({ ...m, lineBg: i === milestones.length - 1 ? 'transparent' : '#E6DFD0' })),
-      leaders: [
-        {
-          name: 'Dr. Sachin Patil',
-          role: 'Director',
-          photo: 'images/team-sachin-patil.jpg',
-          cred: 'Doctorate in Management; 5+ years building overseas agri-supply chains and global partnerships.',
-        },
-        {
-          name: 'Mrs. Padmini Patil',
-          role: 'Director',
-          photo: 'images/team-padmini-patil.jpg',
-          cred: 'MBA (SPPU); 15 years in HR & international business, leads marketing and administration.',
-        },
-        {
-          name: 'Mr. Wonegou Kokou Edem',
-          role: 'Manager · Procurement, Logistics & Supply Chain',
-          photo: 'images/team-wonegou-kokou-edem.jpg',
-          cred: '15+ years in supply chain and operations; leads procurement and logistics in Africa.',
-        },
-      ],
     };
   }
 }
