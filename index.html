@@ -57,7 +57,7 @@
       <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,30,22,0.25) 0%, rgba(10,30,22,0.72) 100%); border-radius: 28px; pointer-events: none;"></div>
       <div style="position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 44px 44px; pointer-events: none;">
         <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(34px, 5vw, 58px); line-height: 1.08; color: #FCFAF4; margin: 0 0 14px; max-width: 720px; text-wrap: pretty;">Exporters of Fresh Indian Produce &amp; Premium Staples</h1>
-        <p style="font-size: 17px; color: #E3E9DE; margin: 0 0 26px; font-weight: 500;">APEDA &amp; FSSAI certified &nbsp;·&nbsp; Serving 14+ countries since {{ establishedYear }}</p>
+        <p style="font-size: 17px; color: #E3E9DE; margin: 0 0 26px; font-weight: 500;">APEDA &amp; Spices Board registered &nbsp;·&nbsp; Serving 14+ countries since {{ establishedYear }}</p>
         <div style="display: flex; gap: 14px; flex-wrap: wrap; pointer-events: auto;">
           <a href="request-a-quote.html" style="display: inline-flex; align-items: center; background: #B8912E; color: #FFFFFF; text-decoration: none; font-size: 15.5px; font-weight: 600; padding: 14px 28px; border-radius: 999px;" style-hover="background: #9E7B24;">Request a Quote</a>
           <a href="#products" style="display: inline-flex; align-items: center; background: rgba(252,250,244,0.14); border: 1px solid rgba(252,250,244,0.55); color: #FCFAF4; text-decoration: none; font-size: 15.5px; font-weight: 600; padding: 14px 28px; border-radius: 999px;" style-hover="background: rgba(252,250,244,0.26);">Explore Products</a>
@@ -316,10 +316,12 @@
       <div>
         <div style="font-weight: 700; font-size: 12.5px; letter-spacing: 0.16em; color: #E8C766; text-transform: uppercase; margin-bottom: 14px;">Registration</div>
         <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13.5px;">
-          <span>IEC No. 0523098765</span>
+          <span>IEC No. AAMCP9797N</span>
           <span>GST No. 27AAKCP1234F1Z5</span>
-          <span>APEDA RCMC 154321</span>
-          <span>FSSAI Lic. 10023045000789</span>
+          <span>APEDA RCMC 220555</span>
+          <span>Spices Board Regd.</span>
+          <span>Coconut Board Regd.</span>
+          <span>Udyam Regd.</span>
         </div>
       </div>
       <div>
@@ -342,7 +344,7 @@
       </div>
     </div>
     <div style="max-width: 1240px; margin: 36px auto 0; padding-top: 22px; border-top: 1px solid rgba(185,205,191,0.22); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 12.5px; color: #8FA697;">
-      <span>IEC · APEDA · FSSAI · Spices Board · ISO 22000 · HACCP certified</span>
+      <span>IEC · APEDA · Spices Board · Coconut Board · Udyam registered</span>
       <span>© 2026 Padmini Resources Indo Africa SARL. All rights reserved.</span>
     </div>
   </footer>
@@ -369,11 +371,11 @@ class Component extends DCLogic {
         cells: avail[name].map((v) => ({ bg: v ? '#1FA362' : '#F0EBDD' })),
       })),
       certs: [
-        { mark: 'IEC', name: 'Import Export Code', reg: 'IEC 0523098765' },
-        { mark: 'AP', name: 'APEDA', reg: 'RCMC 154321' },
-        { mark: 'FS', name: 'FSSAI', reg: 'Lic. 10023045000789' },
-        { mark: 'SB', name: 'Spices Board', reg: 'CRES 8877/2020' },
-        { mark: 'ISO', name: 'ISO 22000 / HACCP', reg: 'Cert. IN-22K-4410' },
+        { mark: 'IEC', name: 'Import Export Code', reg: 'IEC AAMCP9797N' },
+        { mark: 'AP', name: 'APEDA', reg: 'RCMC 220555' },
+        { mark: 'SB', name: 'Spices Board', reg: 'Registered' },
+        { mark: 'CB', name: 'Coconut Board', reg: 'Registered' },
+        { mark: 'UD', name: 'Udyam', reg: 'Registered' },
       ],
       steps: [
         { n: '1', title: 'Enquiry', desc: 'Share product, spec, volume and destination port.' },
