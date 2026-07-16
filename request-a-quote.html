@@ -59,8 +59,9 @@
       <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(34px, 4.4vw, 50px); color: #14352A; margin: 0 0 12px; line-height: 1.08;">Tell us your product and destination</h1>
       <p style="font-size: 15.5px; color: #3D4A41; margin: 0 0 32px; text-wrap: pretty;">Our export desk replies with a firm offer within 24 hours. No account needed, no popups — just the details below.</p>
 
-      <form name="rfq" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; padding: 34px 36px; display: flex; flex-direction: column; gap: 22px;">
+      <form name="rfq" method="POST" data-netlify="true" data-netlify-recaptcha="true" netlify-honeypot="bot-field" action="/thank-you" style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; padding: 34px 36px; display: flex; flex-direction: column; gap: 22px;">
         <input type="hidden" name="form-name" value="rfq">
+        <input type="hidden" name="subject" id="rfq-subject" value="New RFQ — Padmini Resources">
         <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
 
         <div style="display: flex; flex-direction: column; gap: 8px;">
@@ -133,9 +134,43 @@
           Also request a sample <span style="color: #8A8069; font-size: 13px;">(courier charges apply — standard trade practice)</span>
         </label>
 
-        <button type="submit" style="background: #B8912E; color: #FFFFFF; border: none; font-family: 'Archivo', sans-serif; font-size: 16px; font-weight: 600; padding: 16px 28px; border-radius: 999px; cursor: pointer; margin-top: 4px;" style-hover="background: #9E7B24;">Send Enquiry — Quote within 24 Hours</button>
-        <p style="font-size: 12.5px; color: #8A8069; margin: 0; text-align: center;">You'll receive an acknowledgement email immediately. We never share your details.</p>
+        <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #3D4A41; cursor: pointer;">
+          <input type="checkbox" name="consent" value="Yes" required style="width: 18px; height: 18px; accent-color: #0E6B45; margin-top: 2px; flex-shrink: 0;">
+          <span>I agree to be contacted by Padmini Resources about this enquiry using the details provided above. <span style="color: #B8912E;">*</span></span>
+        </label>
+
+        <button type="submit" id="rfq-submit" style="background: #B8912E; color: #FFFFFF; border: none; font-family: 'Archivo', sans-serif; font-size: 16px; font-weight: 600; padding: 16px 28px; border-radius: 999px; cursor: pointer; margin-top: 4px;" style-hover="background: #9E7B24;">Send Enquiry — Quote within 24 Hours</button>
+        <p style="font-size: 12.5px; color: #8A8069; margin: 0; text-align: center;">Our export desk typically replies within 24 hours. We never share your details.</p>
       </form>
+
+      <script>
+      (function () {
+        var form = document.forms['rfq'];
+        if (!form) return;
+        var btn = document.getElementById('rfq-submit');
+        var defaultLabel = btn.textContent;
+        var subjectField = document.getElementById('rfq-subject');
+        var productField = document.getElementById('rfq-product');
+        var companyField = document.getElementById('rfq-company');
+
+        // 'invalid' does not bubble — capture phase catches it on any field.
+        form.addEventListener('invalid', function () {
+          btn.disabled = false;
+          btn.textContent = defaultLabel;
+        }, true);
+
+        form.addEventListener('submit', function () {
+          if (!form.checkValidity()) return;
+          if (subjectField) {
+            var product = productField && productField.value ? productField.value : 'Enquiry';
+            var company = companyField && companyField.value ? companyField.value : 'Unknown company';
+            subjectField.value = 'New RFQ — ' + product + ' — ' + company;
+          }
+          btn.disabled = true;
+          btn.textContent = 'Sending…';
+        });
+      })();
+      </script>
     </div>
 
     <!-- ------- REASSURANCE SIDEBAR ------- -->
