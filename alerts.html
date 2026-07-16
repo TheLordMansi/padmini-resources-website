@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<title>Internal — Padmini Resources</title>
+</head>
+<body>
+<!--
+  Not a page anyone visits. This form's only job is to get picked up by
+  Netlify's build-time form scanner so the "agency-alerts" form exists in
+  Netlify's Forms system. netlify/functions/submission-created.mjs POSTs to
+  it directly (independent of Google Apps Script) whenever a Sheet write or
+  WhatsApp ping fails, so the failure alert survives even if the Apps Script
+  endpoint itself is the thing that's down.
+
+  Dashboard step required: Forms -> agency-alerts -> add an email
+  notification pointing at the agency inbox.
+-->
+<form name="agency-alerts" data-netlify="true" hidden>
+  <input type="hidden" name="form-name" value="agency-alerts">
+  <input type="text" name="subject">
+  <textarea name="message"></textarea>
+  <input type="text" name="submission_id">
+  <input type="text" name="created_at">
+</form>
+</body>
+</html>
