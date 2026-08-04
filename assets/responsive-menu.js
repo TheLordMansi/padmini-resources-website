@@ -20,7 +20,10 @@
   'use strict';
 
   var OPEN_CLASS = 'pr-nav-open';
-  var MOBILE_QUERY = '(max-width: 480px)';
+  // Must match the breakpoint in responsive.css section 3 that reveals the
+  // burger and turns the nav into a dropdown. If they disagree, resizing can
+  // strand the panel open with no visible control to close it.
+  var MOBILE_QUERY = '(max-width: 1024px)';
   var BURGER_SELECTOR = '[data-pr-burger]';
   var HEADER_SELECTOR = 'header[data-screen-label="Header"]';
   var NAV_LINK_SELECTOR = HEADER_SELECTOR + ' nav a';

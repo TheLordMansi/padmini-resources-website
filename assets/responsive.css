@@ -101,93 +101,29 @@ html.pr-nav-open .pr-burger span:nth-child(3) {
 
 
 /* ==========================================================================
-   3. Header — tablet (481px - 1024px)
-   Nav stays horizontal per spec; type and spacing compress so logo + nav +
-   both CTAs hold one row as far down as possible before wrapping.
+   3. Header — collapsed nav (<= 1024px)
+
+   The spec's breakpoint table keeps the nav horizontal through the tablet
+   band, but measured against the real layout that does not survive: the
+   authored bar needs ~1040px for logo + 5 links + 2 CTAs, so below that it
+   wraps. Measured header heights with the nav left horizontal:
+
+       authored    with nav compressed
+       481px  240px      183px
+       768px  191px      125px
+       900px  145px      125px
+
+   A 125-183px sticky header eats a third of an iPad mini's viewport, so the
+   nav collapses into the dropdown for the whole band instead. The spec's own
+   hamburger example uses @media (max-width: 1024px), so this follows that
+   half of the document rather than the table. Result is a flat ~61-67px bar
+   from 320px to 1024px.
+
+   NOTE: responsive-menu.js has a matching 1024px query for the
+   close-on-resize behaviour. Change one, change the other.
    ========================================================================== */
 
-@media (min-width: 481px) and (max-width: 1024px) {
-
-  header[data-screen-label="Header"] > div {
-    padding: 10px 20px !important;
-    gap: 14px !important;
-  }
-
-  /* Logo lockup */
-  header[data-screen-label="Header"] > div > a:first-child > span:first-child {
-    width: 44px !important;
-    height: 44px !important;
-  }
-  header[data-screen-label="Header"] > div > a:first-child img {
-    width: 36px !important;
-    height: 36px !important;
-  }
-  header[data-screen-label="Header"] > div > a:first-child span span:first-child {
-    font-size: 18px !important;
-  }
-  header[data-screen-label="Header"] > div > a:first-child span span:last-child {
-    font-size: 9px !important;
-    letter-spacing: .18em !important;
-  }
-
-  header[data-screen-label="Header"] nav {
-    gap: 16px !important;
-  }
-  header[data-screen-label="Header"] nav a {
-    font-size: 13.5px !important;
-    min-height: 44px;
-    display: inline-flex !important;
-    align-items: center;
-  }
-
-  /* CTA pair */
-  header[data-screen-label="Header"] nav + div {
-    gap: 8px !important;
-  }
-  header[data-screen-label="Header"] nav + div > a {
-    font-size: 13px !important;
-    padding: 10px 16px !important;
-    min-height: 44px;
-    box-sizing: border-box;
-  }
-}
-
-
-/* ==========================================================================
-   4. Header — mobile (<= 480px)
-   Nav collapses into a full-width dropdown driven by html.pr-nav-open.
-   ========================================================================== */
-
-@media (max-width: 480px) {
-
-  header[data-screen-label="Header"] > div {
-    padding: 8px 12px !important;
-    gap: 8px !important;
-    flex-wrap: nowrap !important;
-  }
-
-  /* Logo shrinks and takes the free space, pushing CTA + burger right. */
-  header[data-screen-label="Header"] > div > a:first-child {
-    gap: 8px !important;
-    flex: 1 1 auto;
-    min-width: 0;
-  }
-  header[data-screen-label="Header"] > div > a:first-child > span:first-child {
-    width: 38px !important;
-    height: 38px !important;
-  }
-  header[data-screen-label="Header"] > div > a:first-child img {
-    width: 30px !important;
-    height: 30px !important;
-  }
-  header[data-screen-label="Header"] > div > a:first-child span span:first-child {
-    font-size: 15px !important;
-    letter-spacing: .01em !important;
-  }
-  header[data-screen-label="Header"] > div > a:first-child span span:last-child {
-    font-size: 8px !important;
-    letter-spacing: .16em !important;
-  }
+@media (max-width: 1024px) {
 
   .pr-burger {
     display: inline-flex !important;
@@ -230,14 +166,136 @@ html.pr-nav-open .pr-burger span:nth-child(3) {
     border-bottom: 0;
   }
 
-  /* --- CTA pair: WhatsApp drops out of the bar, quote button stays ------ */
+  /* One row, always. The authored bar has flex-wrap:wrap, which is what
+     produced the 125-240px headers; forbidding the wrap means any shortfall
+     is absorbed by the logo instead of spilling onto a second row. */
+  header[data-screen-label="Header"] > div {
+    flex-wrap: nowrap !important;
+  }
+
+  /* Logo takes the slack so CTA + burger sit hard right. */
+  header[data-screen-label="Header"] > div > a:first-child {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
   header[data-screen-label="Header"] nav + div {
-    gap: 8px !important;
     order: 2;
     flex-shrink: 0;
   }
+
+  /* The wordmark column is a flex item whose default min-width:auto refuses
+     to shrink below its text. Without min-width:0 it overflows the anchor's
+     box and the CTA button paints on top of it — "PADMINI RESOURC" with the
+     gold button over the rest. Every ancestor in the chain needs it. */
+  header[data-screen-label="Header"] > div > a:first-child > span:last-child {
+    min-width: 0;
+    overflow: hidden;
+  }
+  header[data-screen-label="Header"] > div > a:first-child > span:last-child > span {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   3c. Small tablets / large phones (<= 767px)
+   With both CTAs present the bar still needed ~605px, so 481-600 kept
+   wrapping. WhatsApp drops out of the bar here — it is still reachable from
+   the hero, the footer and the final CTA on every page — which brings the
+   requirement under 481px and holds one row.
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 767px) {
   header[data-screen-label="Header"] nav + div > a:first-child {
     display: none !important;
+  }
+}
+
+
+/* ==========================================================================
+   3b. Header — tablet sizing (481px - 1024px)
+   Nav is already a dropdown by here; this is just the bar's own proportions.
+   ========================================================================== */
+
+@media (min-width: 481px) and (max-width: 1024px) {
+
+  header[data-screen-label="Header"] > div {
+    padding: 10px 20px !important;
+    gap: 14px !important;
+  }
+
+  /* Logo lockup */
+  header[data-screen-label="Header"] > div > a:first-child > span:first-child {
+    width: 44px !important;
+    height: 44px !important;
+  }
+  header[data-screen-label="Header"] > div > a:first-child img {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  header[data-screen-label="Header"] > div > a:first-child span span:first-child {
+    font-size: 18px !important;
+  }
+  header[data-screen-label="Header"] > div > a:first-child span span:last-child {
+    font-size: 9px !important;
+    letter-spacing: .18em !important;
+  }
+
+  /* CTA pair — both stay visible here; there is room once the nav is out. */
+  header[data-screen-label="Header"] nav + div {
+    gap: 8px !important;
+  }
+  header[data-screen-label="Header"] nav + div > a {
+    font-size: 13px !important;
+    padding: 10px 16px !important;
+    min-height: 44px;
+    box-sizing: border-box;
+  }
+}
+
+
+/* ==========================================================================
+   4. Header — mobile (<= 480px)
+   Nav collapses into a full-width dropdown driven by html.pr-nav-open.
+   ========================================================================== */
+
+@media (max-width: 480px) {
+
+  header[data-screen-label="Header"] > div {
+    padding: 8px 12px !important;
+    gap: 8px !important;
+  }
+
+  /* Logo shrinks further on phones. */
+  header[data-screen-label="Header"] > div > a:first-child {
+    gap: 8px !important;
+  }
+  header[data-screen-label="Header"] > div > a:first-child > span:first-child {
+    width: 38px !important;
+    height: 38px !important;
+  }
+  header[data-screen-label="Header"] > div > a:first-child img {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  header[data-screen-label="Header"] > div > a:first-child > span:last-child > span:first-child {
+    font-size: 14px !important;
+    letter-spacing: .01em !important;
+  }
+  /* "INDO AFRICA SARL" wrapped to two lines and pushed the bar to 74px,
+     over the 56-64px the spec asks for. It is the first thing to drop. */
+  header[data-screen-label="Header"] > div > a:first-child > span:last-child > span:last-child {
+    display: none !important;
+  }
+
+  /* Burger, dropdown, nowrap and the ellipsis chain are defined once in
+     section 3 (<=1024px); only the phone-specific trims live here. */
+
+  header[data-screen-label="Header"] nav + div {
+    gap: 8px !important;
   }
   header[data-screen-label="Header"] nav + div > a:last-child {
     font-size: 12.5px !important;
@@ -245,6 +303,31 @@ html.pr-nav-open .pr-burger span:nth-child(3) {
     min-height: 44px;
     box-sizing: border-box;
     white-space: nowrap;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   4b. Very small phones (<= 400px)
+
+   Measured in Chrome: logo mark 40 + wordmark 143 + quote pill 116..124 +
+   burger 44 + gutters 24 + gaps 24 = 391..399px of demand. The full lockup
+   therefore only fits from ~401px up; below that an ellipsis would read as
+   breakage ("PADMINI R…"), so the wordmark drops and the logo image carries
+   the brand — which is also where the name reappears, in the hero and footer.
+
+   The collision this replaced is prevented independently by the min-width:0 +
+   overflow:hidden chain above, so a width this rule does not anticipate
+   degrades to a quiet ellipsis rather than text under the button.
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 400px) {
+  header[data-screen-label="Header"] > div > a:first-child > span:last-child {
+    display: none !important;
+  }
+  header[data-screen-label="Header"] nav + div > a:last-child {
+    font-size: 12px !important;
+    padding: 0 12px !important;
   }
 }
 
