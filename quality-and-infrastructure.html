@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/responsive.css">
 <script src="assets/support.js"></script>
+<script src="assets/responsive-menu.js"></script>
 </head>
 <body>
 <x-dc>
@@ -32,7 +34,8 @@
           <span style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; color: #8A8069;">INDO AFRICA SARL</span>
         </span>
       </a>
-      <nav style="display: flex; align-items: center; gap: 26px; margin-left: auto; flex-wrap: wrap;">
+      <button type="button" class="pr-burger" data-pr-burger aria-label="Open menu" aria-expanded="false" aria-controls="pr-primary-nav"><span></span><span></span><span></span></button>
+      <nav id="pr-primary-nav" style="display: flex; align-items: center; gap: 26px; margin-left: auto; flex-wrap: wrap;">
         <a href="products.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">Products</a>
         <a href="certifications.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">Certifications</a>
         <a href="how-we-export.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">How We Export</a>
@@ -95,7 +98,7 @@
   <section data-screen-label="Quality control" style="max-width: 1240px; margin: 0 auto; padding: 40px 24px 12px;">
     <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 10px;">Quality Control</p>
     <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 40px); color: #14352A; margin: 0 0 26px;">Inspected at four points before it sails</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 18px;">
       <sc-for list="{{ qcSteps }}" as="q" hint-placeholder-count="4">
         <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 24px; padding: 26px 28px;">
           <span style="display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: #EFF5EC; color: #0E6B45; font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 22px;">{{ q.n }}</span>
@@ -110,7 +113,7 @@
   <section data-screen-label="Loading gallery" style="max-width: 1240px; margin: 0 auto; padding: 40px 24px 56px;">
     <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 10px;">Loading &amp; Stuffing</p>
     <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 40px); color: #14352A; margin: 0 0 26px;">From cold store to sealed container</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap: 16px;">
       <image-slot id="qi-load-1" shape="rounded" radius="22" placeholder="Pallets moving to reefer" style="display: block; width: 100%; height: 240px;"></image-slot>
       <image-slot id="qi-load-2" shape="rounded" radius="22" placeholder="Container stuffing in progress" style="display: block; width: 100%; height: 240px;"></image-slot>
       <image-slot id="qi-load-3" shape="rounded" radius="22" placeholder="Sealed reefer with logger" style="display: block; width: 100%; height: 240px;"></image-slot>

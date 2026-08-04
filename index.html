@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/responsive.css">
 <script src="assets/support.js"></script>
+<script src="assets/responsive-menu.js"></script>
 </head>
 <body>
 <x-dc>
@@ -33,7 +35,8 @@
           <span style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; color: #8A8069;">INDO AFRICA SARL</span>
         </span>
       </a>
-      <nav style="display: flex; align-items: center; gap: 26px; margin-left: auto; flex-wrap: wrap;">
+      <button type="button" class="pr-burger" data-pr-burger aria-label="Open menu" aria-expanded="false" aria-controls="pr-primary-nav"><span></span><span></span><span></span></button>
+      <nav id="pr-primary-nav" style="display: flex; align-items: center; gap: 26px; margin-left: auto; flex-wrap: wrap;">
         <a href="products.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">Products</a>
         <a href="certifications.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">Certifications</a>
         <a href="how-we-export.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">How We Export</a>
@@ -83,7 +86,7 @@
 
   <!-- ============ 4. STATS STRIP ============ -->
   <section data-screen-label="Stats" style="max-width: 1240px; margin: 0 auto; padding: 22px 24px 10px;">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 16px;">
       <div style="background: #14352A; border-radius: 22px; padding: 30px 28px; text-align: center;">
         <div style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 52px; color: #E8C766; line-height: 1;">{{ yearsExporting }}+</div>
         <div style="font-size: 13.5px; font-weight: 600; letter-spacing: 0.08em; color: #B9CDBF; margin-top: 8px; text-transform: uppercase;">Years Exporting</div>
@@ -107,7 +110,7 @@
   <section id="products" data-screen-label="Product categories" style="max-width: 1240px; margin: 0 auto; padding: 56px 24px 20px;">
     <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 10px;">What We Export</p>
     <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 42px); color: #14352A; margin: 0 0 28px; text-wrap: pretty;">Two divisions, one standard of quality</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 20px;">
 
       <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; overflow: hidden; display: flex; flex-direction: column;">
         <image-slot id="cat-fresh" shape="rect" placeholder="Fresh produce — grapes / pomegranate crates" style="display: block; width: 100%; height: 300px;"></image-slot>
@@ -170,7 +173,7 @@
   <section data-screen-label="Capabilities" style="max-width: 1240px; margin: 0 auto; padding: 48px 24px 20px;">
     <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 10px;">Capabilities</p>
     <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 42px); color: #14352A; margin: 0 0 26px;">Built for reliable, repeat supply</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 18px;">
       <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 24px; overflow: hidden;">
         <image-slot id="cap-coldchain" shape="rect" src="images/facilities/pre-cooling-chamber.webp" placeholder="Pre-cooling chambers" style="display: block; width: 100%; height: 180px;"></image-slot>
         <div style="padding: 18px 22px 22px;">
@@ -206,7 +209,7 @@
   <section id="process" data-screen-label="Export process" style="max-width: 1240px; margin: 0 auto; padding: 48px 24px 20px;">
     <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 10px;">How We Export</p>
     <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 42px); color: #14352A; margin: 0 0 26px;">From enquiry to shipment in four steps</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); gap: 18px;">
       <sc-for list="{{ steps }}" as="step" hint-placeholder-count="4">
         <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 24px; padding: 26px;">
           <span style="display: flex; align-items: center; justify-content: center; width: 54px; height: 54px; border-radius: 50%; background: #14352A; color: #E8C766; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 26px;">{{ step.n }}</span>
@@ -221,9 +224,9 @@
   <section id="about" data-screen-label="Countries served" style="max-width: 1240px; margin: 0 auto; padding: 48px 24px 20px;">
     <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 10px;">Where We Ship</p>
     <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 42px); color: #14352A; margin: 0 0 26px;">23 markets across four regions</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; align-items: stretch;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 20px; align-items: stretch;">
       <image-slot id="world-map" shape="rounded" radius="26" placeholder="World map graphic — highlighted export markets" style="display: block; width: 100%; min-height: 380px;"></image-slot>
-      <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; padding: 28px 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 22px; align-content: center;">
+      <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; padding: 28px 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(130px, 100%), 1fr)); gap: 22px; align-content: center;">
         <div>
           <div style="font-weight: 700; font-size: 13px; letter-spacing: 0.14em; color: #B8912E; text-transform: uppercase; margin-bottom: 10px;">Gulf</div>
           <div style="display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: #3D4A41;"><span>UAE</span><span>Saudi Arabia</span><span>Qatar</span><span>Oman</span><span>Kuwait</span><span>Bahrain</span></div>
@@ -246,7 +249,7 @@
 
   <!-- ============ 10. TESTIMONIALS ============ -->
   <section data-screen-label="Testimonials" style="max-width: 1240px; margin: 0 auto; padding: 48px 24px 20px;">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 20px;">
       <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; padding: 34px 36px;">
         <div style="font-family: 'Cormorant Garamond', serif; font-size: 46px; line-height: 0.6; color: #B8912E;">“</div>
         <p style="font-size: 16.5px; color: #1C231E; margin: 14px 0 22px; text-wrap: pretty;">Three seasons of grapes without a single rejected consignment. Documentation is always ready before the vessel sails — that is rare.</p>
@@ -303,7 +306,7 @@
 
   <!-- ============ 13. FOOTER ============ -->
   <footer data-screen-label="Footer" style="background: #0E271F; color: #B9CDBF; padding: 56px 24px 28px;">
-    <div style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 36px;">
+    <div style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 36px;">
       <div>
         <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
           <span style="display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 50%; background: #FFFFFF; overflow: hidden;">
