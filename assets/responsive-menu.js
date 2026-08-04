@@ -1,5 +1,5 @@
 /**
- * Padmini Resources — mobile nav toggle.
+ * Padmini Resources — mobile header behaviours: nav toggle and back button.
  *
  * Two constraints from the stack shape this file:
  *
@@ -25,6 +25,7 @@
   // strand the panel open with no visible control to close it.
   var MOBILE_QUERY = '(max-width: 1024px)';
   var BURGER_SELECTOR = '[data-pr-burger]';
+  var BACK_SELECTOR = '[data-pr-back]';
   var HEADER_SELECTOR = 'header[data-screen-label="Header"]';
   var NAV_LINK_SELECTOR = HEADER_SELECTOR + ' nav a';
 
@@ -52,11 +53,39 @@
     }
   }
 
+  // True only when the previous page was on this site. A visitor who arrived
+  // from a search result, a WhatsApp link or an email has history to go back
+  // to, but going back there means leaving the site — so that case falls
+  // through to the anchor's own href instead.
+  function cameFromThisSite() {
+    var ref = document.referrer;
+    if (!ref) return false;
+    try {
+      return new URL(ref).origin === window.location.origin;
+    } catch (err) {
+      return false;
+    }
+  }
+
   document.addEventListener('click', function (e) {
     var burger = closestFrom(e.target, BURGER_SELECTOR);
     if (burger) {
       e.preventDefault();
       setOpen(!isOpen());
+      return;
+    }
+
+    var back = closestFrom(e.target, BACK_SELECTOR);
+    if (back) {
+      if (isOpen()) setOpen(false);
+      // The button is a real <a href="index.html">, so with JS off, on a cold
+      // entry, or on a modifier-click it still goes somewhere sensible. Only
+      // take over when stepping back stays inside the site.
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      if (window.history.length > 1 && cameFromThisSite()) {
+        e.preventDefault();
+        window.history.back();
+      }
       return;
     }
 

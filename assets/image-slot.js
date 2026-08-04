@@ -176,7 +176,14 @@
     // same left/top/width/height in frame-%, computed by _applyView(), so the
     // inside-mask crop and the outside-mask spill stay pixel-aligned.
     '.frame img{position:absolute;max-width:none;transform:translate(-50%,-50%);' +
-    '  -webkit-user-drag:none;user-select:none;touch-action:none}' +
+    '  -webkit-user-drag:none;user-select:none}' +
+    // touch-action belongs to the reframe drag, not to the image at rest. Set
+    // unconditionally it also cancels ordinary touch scrolling anywhere a
+    // filled slot is under the finger — on a phone that is most of a page
+    // built from image cards, so the page reads as frozen. Reframe is gated on
+    // data-editable (the omelette host) and never runs on the published site,
+    // so scoping it here costs the editor nothing.
+    ':host([data-reframe]) .frame img{touch-action:none}' +
     // Reframe mode (double-click): the full image spills past the mask. The
     // spill layer is sized to the IMAGE bounds so its corners are where the
     // resize handles belong. The ghost <img> inside is translucent; the real
@@ -251,7 +258,11 @@
       root.innerHTML =
         '<style>' + stylesheet + '</style>' +
         '<div class="frame" part="frame">' +
-        '  <img part="image" alt="" draggable="false" style="display:none">' +
+        // lazy + async decode: certifications.html alone points five slots at
+        // multi-hundred-KB PNGs, and decoding them all on load stalls the main
+        // thread on a phone. Both degrade safely — _applyView() already has a
+        // branch for "dimensions not known yet" and re-runs on the load event.
+        '  <img part="image" alt="" draggable="false" loading="lazy" decoding="async" style="display:none">' +
         '  <div class="empty" part="empty">' + icon +
         '    <div class="cap"></div>' +
         '    <div class="sub">or <u>browse files</u></div></div>' +

@@ -101,6 +101,47 @@ html.pr-nav-open .pr-burger span:nth-child(3) {
 
 
 /* ==========================================================================
+   2b. Back button
+   Same shape and touch target as the burger, mirrored to the other end of the
+   bar. Hidden at every width except the band where the nav is collapsed —
+   above that the full nav is on screen and the browser's own back control is
+   a keystroke away.
+   ========================================================================== */
+
+.pr-back {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  /* Buttons get border-box from the UA sheet, anchors do not — without this
+     the back link renders 46px against the burger's 44px. */
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  flex-shrink: 0;
+  border: 1px solid #E6DFD0;
+  border-radius: 12px;
+  background: #FFFFFF;
+  color: #14352A;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Chevron drawn from two borders rather than a glyph, so it inherits colour
+   and never depends on a webfont having arrived. */
+.pr-back span {
+  display: block;
+  width: 9px;
+  height: 9px;
+  margin-left: 3px;
+  border-left: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+
+
+/* ==========================================================================
    3. Header — collapsed nav (<= 1024px)
 
    The spec's breakpoint table keeps the nav horizontal through the tablet
@@ -128,6 +169,25 @@ html.pr-nav-open .pr-burger span:nth-child(3) {
   .pr-burger {
     display: inline-flex !important;
     order: 3;
+  }
+
+  /* The back link sits after the logo in source order so the logo stays
+     `> a:first-child` for the eight rules below; `order` puts it first on
+     screen without any of them having to change. */
+  .pr-back {
+    display: inline-flex !important;
+    order: -1;
+  }
+
+  /* A full-bleed sticky bar with a live backdrop-filter forces the compositor
+     to re-blur everything scrolling underneath it, every frame — the single
+     most expensive thing on these pages while a finger is moving. The authored
+     background is rgba(250,247,240,.95) over a #FAF7F0 page, so painting it
+     opaque instead is the same pixels at a fraction of the cost. */
+  header[data-screen-label="Header"] {
+    background: #FAF7F0 !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
   }
 
   /* --- Nav becomes the dropdown panel ---------------------------------- */
@@ -285,9 +345,12 @@ html.pr-nav-open .pr-burger span:nth-child(3) {
     font-size: 14px !important;
     letter-spacing: .01em !important;
   }
-  /* "INDO AFRICA SARL" wrapped to two lines and pushed the bar to 74px,
-     over the 56-64px the spec asks for. It is the first thing to drop. */
-  header[data-screen-label="Header"] > div > a:first-child > span:last-child > span:last-child {
+
+  /* The whole wordmark column drops here, not just the "INDO AFRICA SARL"
+     line, because the back button took the space it used to fit in — see the
+     arithmetic in 4b. The logo image carries the brand at these widths, and
+     the name reappears immediately in the hero and the footer. */
+  header[data-screen-label="Header"] > div > a:first-child > span:last-child {
     display: none !important;
   }
 
@@ -310,21 +373,19 @@ html.pr-nav-open .pr-burger span:nth-child(3) {
 /* --------------------------------------------------------------------------
    4b. Very small phones (<= 400px)
 
-   Measured in Chrome: logo mark 40 + wordmark 143 + quote pill 116..124 +
-   burger 44 + gutters 24 + gaps 24 = 391..399px of demand. The full lockup
-   therefore only fits from ~401px up; below that an ellipsis would read as
-   breakage ("PADMINI R…"), so the wordmark drops and the logo image carries
-   the brand — which is also where the name reappears, in the hero and footer.
+   The wordmark used to drop here rather than at 480px. The measurement it was
+   based on: logo mark 40 + wordmark 143 + quote pill 116..124 + burger 44 +
+   gutters 24 + gaps 24 = 391..399px of demand, so the full lockup fit from
+   ~401px up. The back button adds a 44px control and one more 8px gap, taking
+   demand to 443..451px — past every common phone width — so the drop moved up
+   to 480 in section 4 and only the CTA trim is left here.
 
-   The collision this replaced is prevented independently by the min-width:0 +
-   overflow:hidden chain above, so a width this rule does not anticipate
-   degrades to a quiet ellipsis rather than text under the button.
+   The collision that rule originally prevented is handled independently by the
+   min-width:0 + overflow:hidden chain in section 3, so a width neither rule
+   anticipates degrades to a quiet ellipsis rather than text under the button.
    -------------------------------------------------------------------------- */
 
 @media (max-width: 400px) {
-  header[data-screen-label="Header"] > div > a:first-child > span:last-child {
-    display: none !important;
-  }
   header[data-screen-label="Header"] nav + div > a:last-child {
     font-size: 12px !important;
     padding: 0 12px !important;
