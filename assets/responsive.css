@@ -1,0 +1,696 @@
+/* ==========================================================================
+   Padmini Resources — responsive layer
+   --------------------------------------------------------------------------
+   The pages are authored as dc-runtime templates with 100% inline styles.
+   Inline styles beat stylesheet rules on specificity, so every declaration
+   here that overrides an authored value MUST carry !important. That is not
+   sloppiness — it is the only way a stylesheet can reach an inline style.
+
+   Breakpoints
+     Mobile   <= 480px
+     Tablet    481px - 1024px
+     Desktop  >= 1025px   <- no rules target this band; desktop is untouched.
+
+   Hooks: almost everything is selected through the data-screen-label
+   attributes the templates already carry, so the markup diff stays tiny.
+   The only new element in the markup is the .pr-burger button.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. Global safety
+   ========================================================================== */
+
+img,
+iframe,
+video,
+canvas {
+  max-width: 100%;
+}
+
+/* Long unbroken tokens (emails, IEC/GST codes) must not force a scrollbar. */
+@media (max-width: 480px) {
+  body {
+    overflow-wrap: break-word;
+  }
+}
+
+/* Visible keyboard focus — the authored styles define none. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #B8912E;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  .pr-burger span {
+    transition: none !important;
+  }
+}
+
+
+/* ==========================================================================
+   2. Hamburger button
+   Hidden at every width except mobile. Lives in the markup on all pages.
+   ========================================================================== */
+
+.pr-burger {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  margin: 0;
+  flex-shrink: 0;
+  border: 1px solid #E6DFD0;
+  border-radius: 12px;
+  background: #FFFFFF;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pr-burger span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: #14352A;
+  transition: transform .18s ease, opacity .18s ease;
+}
+
+html.pr-nav-open .pr-burger span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+html.pr-nav-open .pr-burger span:nth-child(2) {
+  opacity: 0;
+}
+
+html.pr-nav-open .pr-burger span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+
+/* ==========================================================================
+   3. Header — collapsed nav (<= 1024px)
+
+   The spec's breakpoint table keeps the nav horizontal through the tablet
+   band, but measured against the real layout that does not survive: the
+   authored bar needs ~1040px for logo + 5 links + 2 CTAs, so below that it
+   wraps. Measured header heights with the nav left horizontal:
+
+       authored    with nav compressed
+       481px  240px      183px
+       768px  191px      125px
+       900px  145px      125px
+
+   A 125-183px sticky header eats a third of an iPad mini's viewport, so the
+   nav collapses into the dropdown for the whole band instead. The spec's own
+   hamburger example uses @media (max-width: 1024px), so this follows that
+   half of the document rather than the table. Result is a flat ~61-67px bar
+   from 320px to 1024px.
+
+   NOTE: responsive-menu.js has a matching 1024px query for the
+   close-on-resize behaviour. Change one, change the other.
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+
+  .pr-burger {
+    display: inline-flex !important;
+    order: 3;
+  }
+
+  /* --- Nav becomes the dropdown panel ---------------------------------- */
+  header[data-screen-label="Header"] nav {
+    display: none !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    flex-wrap: nowrap !important;
+    gap: 0 !important;
+    margin-left: 0 !important;
+    padding: 4px 0 8px !important;
+    background: #FAF7F0 !important;
+    border-bottom: 1px solid #E6DFD0 !important;
+    box-shadow: 0 14px 28px rgba(10, 30, 22, .12) !important;
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+  }
+
+  html.pr-nav-open header[data-screen-label="Header"] nav {
+    display: flex !important;
+  }
+
+  header[data-screen-label="Header"] nav a {
+    display: flex !important;
+    align-items: center !important;
+    min-height: 48px;
+    padding: 0 16px !important;
+    font-size: 15.5px !important;
+    border-bottom: 1px solid rgba(230, 223, 208, .75);
+  }
+  header[data-screen-label="Header"] nav a:last-child {
+    border-bottom: 0;
+  }
+
+  /* One row, always. The authored bar has flex-wrap:wrap, which is what
+     produced the 125-240px headers; forbidding the wrap means any shortfall
+     is absorbed by the logo instead of spilling onto a second row. */
+  header[data-screen-label="Header"] > div {
+    flex-wrap: nowrap !important;
+  }
+
+  /* Logo takes the slack so CTA + burger sit hard right. */
+  header[data-screen-label="Header"] > div > a:first-child {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  header[data-screen-label="Header"] nav + div {
+    order: 2;
+    flex-shrink: 0;
+  }
+
+  /* The wordmark column is a flex item whose default min-width:auto refuses
+     to shrink below its text. Without min-width:0 it overflows the anchor's
+     box and the CTA button paints on top of it — "PADMINI RESOURC" with the
+     gold button over the rest. Every ancestor in the chain needs it. */
+  header[data-screen-label="Header"] > div > a:first-child > span:last-child {
+    min-width: 0;
+    overflow: hidden;
+  }
+  header[data-screen-label="Header"] > div > a:first-child > span:last-child > span {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   3c. Small tablets / large phones (<= 767px)
+   With both CTAs present the bar still needed ~605px, so 481-600 kept
+   wrapping. WhatsApp drops out of the bar here — it is still reachable from
+   the hero, the footer and the final CTA on every page — which brings the
+   requirement under 481px and holds one row.
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  header[data-screen-label="Header"] nav + div > a:first-child {
+    display: none !important;
+  }
+}
+
+
+/* ==========================================================================
+   3b. Header — tablet sizing (481px - 1024px)
+   Nav is already a dropdown by here; this is just the bar's own proportions.
+   ========================================================================== */
+
+@media (min-width: 481px) and (max-width: 1024px) {
+
+  header[data-screen-label="Header"] > div {
+    padding: 10px 20px !important;
+    gap: 14px !important;
+  }
+
+  /* Logo lockup */
+  header[data-screen-label="Header"] > div > a:first-child > span:first-child {
+    width: 44px !important;
+    height: 44px !important;
+  }
+  header[data-screen-label="Header"] > div > a:first-child img {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  header[data-screen-label="Header"] > div > a:first-child span span:first-child {
+    font-size: 18px !important;
+  }
+  header[data-screen-label="Header"] > div > a:first-child span span:last-child {
+    font-size: 9px !important;
+    letter-spacing: .18em !important;
+  }
+
+  /* CTA pair — both stay visible here; there is room once the nav is out. */
+  header[data-screen-label="Header"] nav + div {
+    gap: 8px !important;
+  }
+  header[data-screen-label="Header"] nav + div > a {
+    font-size: 13px !important;
+    padding: 10px 16px !important;
+    min-height: 44px;
+    box-sizing: border-box;
+  }
+}
+
+
+/* ==========================================================================
+   4. Header — mobile (<= 480px)
+   Nav collapses into a full-width dropdown driven by html.pr-nav-open.
+   ========================================================================== */
+
+@media (max-width: 480px) {
+
+  header[data-screen-label="Header"] > div {
+    padding: 8px 12px !important;
+    gap: 8px !important;
+  }
+
+  /* Logo shrinks further on phones. */
+  header[data-screen-label="Header"] > div > a:first-child {
+    gap: 8px !important;
+  }
+  header[data-screen-label="Header"] > div > a:first-child > span:first-child {
+    width: 38px !important;
+    height: 38px !important;
+  }
+  header[data-screen-label="Header"] > div > a:first-child img {
+    width: 30px !important;
+    height: 30px !important;
+  }
+  header[data-screen-label="Header"] > div > a:first-child > span:last-child > span:first-child {
+    font-size: 14px !important;
+    letter-spacing: .01em !important;
+  }
+  /* "INDO AFRICA SARL" wrapped to two lines and pushed the bar to 74px,
+     over the 56-64px the spec asks for. It is the first thing to drop. */
+  header[data-screen-label="Header"] > div > a:first-child > span:last-child > span:last-child {
+    display: none !important;
+  }
+
+  /* Burger, dropdown, nowrap and the ellipsis chain are defined once in
+     section 3 (<=1024px); only the phone-specific trims live here. */
+
+  header[data-screen-label="Header"] nav + div {
+    gap: 8px !important;
+  }
+  header[data-screen-label="Header"] nav + div > a:last-child {
+    font-size: 12.5px !important;
+    padding: 0 14px !important;
+    min-height: 44px;
+    box-sizing: border-box;
+    white-space: nowrap;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   4b. Very small phones (<= 400px)
+
+   Measured in Chrome: logo mark 40 + wordmark 143 + quote pill 116..124 +
+   burger 44 + gutters 24 + gaps 24 = 391..399px of demand. The full lockup
+   therefore only fits from ~401px up; below that an ellipsis would read as
+   breakage ("PADMINI R…"), so the wordmark drops and the logo image carries
+   the brand — which is also where the name reappears, in the hero and footer.
+
+   The collision this replaced is prevented independently by the min-width:0 +
+   overflow:hidden chain above, so a width this rule does not anticipate
+   degrades to a quiet ellipsis rather than text under the button.
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 400px) {
+  header[data-screen-label="Header"] > div > a:first-child > span:last-child {
+    display: none !important;
+  }
+  header[data-screen-label="Header"] nav + div > a:last-child {
+    font-size: 12px !important;
+    padding: 0 12px !important;
+  }
+}
+
+
+/* ==========================================================================
+   5. Section rhythm — gutters and vertical padding
+   Every content band carries data-screen-label, so one rule reaches all of
+   them across all 16 pages. The selector is deliberately element-agnostic:
+   most bands are <section>, but Contact, RFQ form, Thank you and Product
+   detail are <div>, and a `section[...]` selector silently skipped those
+   pages entirely. Longhand !important beats the inline `padding` shorthand.
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  [data-screen-label]:not(header):not(footer) {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  [data-screen-label]:not(header):not(footer) {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    padding-top: 34px !important;
+    padding-bottom: 14px !important;
+  }
+
+  [data-screen-label] h2 {
+    font-size: 24px !important;
+    line-height: 1.22 !important;
+    margin-bottom: 18px !important;
+  }
+  [data-screen-label] h3 {
+    font-size: 22px !important;
+  }
+}
+
+
+/* ==========================================================================
+   6. Hero (index.html)
+   ========================================================================== */
+
+@media (min-width: 481px) and (max-width: 1024px) {
+  [data-screen-label="Hero"] image-slot {
+    height: 400px !important;
+  }
+  [data-screen-label="Hero"] > div > div:last-child {
+    padding: 30px 28px 32px !important;
+  }
+  [data-screen-label="Hero"] h1 {
+    font-size: 34px !important;
+  }
+  [data-screen-label="Hero"] p {
+    font-size: 14.5px !important;
+  }
+  [data-screen-label="Hero"] h1 ~ div > a {
+    min-height: 46px;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Overrides the generic gutter rule above. The :not()s are not decorative:
+     they match that rule's specificity (0,1,2) so source order decides, and
+     this block comes later. Drop them and the generic rule wins. */
+  [data-screen-label="Hero"]:not(header):not(footer) {
+    padding: 12px 16px 0 !important;
+  }
+  [data-screen-label="Hero"] > div,
+  [data-screen-label="Hero"] > div > div:nth-child(2) {
+    border-radius: 20px !important;
+  }
+  [data-screen-label="Hero"] image-slot {
+    height: 300px !important;
+    border-radius: 20px !important;
+  }
+  [data-screen-label="Hero"] > div > div:last-child {
+    padding: 20px 18px 22px !important;
+  }
+  [data-screen-label="Hero"] h1 {
+    font-size: 26px !important;
+    line-height: 1.25 !important;
+    margin-bottom: 10px !important;
+  }
+  [data-screen-label="Hero"] p {
+    font-size: 12.5px !important;
+    margin-bottom: 18px !important;
+  }
+  /* CTA row -> stacked full-width buttons */
+  [data-screen-label="Hero"] h1 ~ div {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+  [data-screen-label="Hero"] h1 ~ div > a {
+    justify-content: center !important;
+    width: 100% !important;
+    min-height: 44px;
+    box-sizing: border-box !important;
+    font-size: 14px !important;
+    padding: 11px 20px !important;
+  }
+}
+
+
+/* ==========================================================================
+   7. Trust bar (certifications strip)
+   Desktop keeps its authored flex row untouched. Tablet and mobile switch to
+   an even grid so the last row never strands one orphan badge.
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  [data-screen-label="Trust bar"] > div {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 16px !important;
+    padding: 20px 22px !important;
+  }
+  [data-screen-label="Trust bar"] > div > div {
+    min-width: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  [data-screen-label="Trust bar"] > div {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    padding: 16px !important;
+    border-radius: 18px !important;
+  }
+  [data-screen-label="Trust bar"] > div > div {
+    gap: 10px !important;
+  }
+  [data-screen-label="Trust bar"] > div > div > span:first-child {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 15px !important;
+  }
+  [data-screen-label="Trust bar"] > div > div span span:first-child {
+    font-size: 12.5px !important;
+  }
+  [data-screen-label="Trust bar"] > div > div span span:last-child {
+    font-size: 11px !important;
+  }
+}
+
+
+/* ==========================================================================
+   8. Stats strip — 1x4 desktop, 2x2 tablet and mobile
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  [data-screen-label="Stats"] > div {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  [data-screen-label="Stats"] > div {
+    gap: 12px !important;
+  }
+  [data-screen-label="Stats"] > div > div {
+    padding: 20px 12px !important;
+    border-radius: 18px !important;
+  }
+  [data-screen-label="Stats"] > div > div > div:first-child {
+    font-size: 34px !important;
+  }
+  [data-screen-label="Stats"] > div > div > div:last-child {
+    font-size: 10.5px !important;
+    letter-spacing: .06em !important;
+  }
+}
+
+
+/* ==========================================================================
+   9. Horizontal-scroll tables (seasonality, incoterms, milestones, formats)
+   The inner min-width is deliberate — these scroll rather than reflow. Keep
+   momentum scrolling on touch and trim the wrapper padding.
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  [data-screen-label="Seasonality"] > div,
+  [data-screen-label="Seasonality calendar"] > div,
+  [data-screen-label="Incoterms"] > div,
+  [data-screen-label="Milestones"] > div,
+  [data-screen-label="Formats"] > div,
+  [data-screen-label="Payment terms"] > div {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (max-width: 480px) {
+  [data-screen-label="Seasonality"] > div,
+  [data-screen-label="Seasonality calendar"] > div,
+  [data-screen-label="Incoterms"] > div,
+  [data-screen-label="Milestones"] > div,
+  [data-screen-label="Formats"] > div,
+  [data-screen-label="Payment terms"] > div {
+    padding: 18px 16px !important;
+    border-radius: 18px !important;
+  }
+}
+
+
+/* ==========================================================================
+   10. Final CTA / banner bands
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  [data-screen-label="Final CTA"] > div,
+  [data-screen-label="CTA"] > div,
+  [data-screen-label="About CTA"] > div,
+  [data-screen-label="Certificate copies CTA"] > div,
+  [data-screen-label="Private label banner"] > div {
+    padding: 44px 32px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  [data-screen-label="Final CTA"] > div,
+  [data-screen-label="CTA"] > div,
+  [data-screen-label="About CTA"] > div,
+  [data-screen-label="Certificate copies CTA"] > div,
+  [data-screen-label="Private label banner"] > div {
+    padding: 32px 20px !important;
+    border-radius: 22px !important;
+  }
+  /* These bands come in two shapes. In "Final CTA", "About CTA" and
+     "Certificate copies CTA" the buttons sit in their own row div; in "CTA"
+     and "Private label banner" a single button is a direct child of the
+     band. Both need covering, hence the two selector groups below. */
+
+  /* Band stacks: copy above actions. */
+  [data-screen-label="CTA"] > div,
+  [data-screen-label="About CTA"] > div,
+  [data-screen-label="Certificate copies CTA"] > div,
+  [data-screen-label="Private label banner"] > div {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  /* Action rows stack. Also matches the sibling copy block, which is not a
+     flex container, so the declaration is inert there. */
+  [data-screen-label="Final CTA"] > div > div,
+  [data-screen-label="About CTA"] > div > div,
+  [data-screen-label="Certificate copies CTA"] > div > div {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  /* Buttons go full width in either shape. */
+  [data-screen-label="Final CTA"] > div > div > a,
+  [data-screen-label="About CTA"] > div > div > a,
+  [data-screen-label="Certificate copies CTA"] > div > div > a,
+  [data-screen-label="CTA"] > div > a,
+  [data-screen-label="Private label banner"] > div > a {
+    justify-content: center !important;
+    width: 100% !important;
+    min-height: 44px;
+    box-sizing: border-box !important;
+  }
+}
+
+
+/* ==========================================================================
+   11. Forms (request-a-quote, contact)
+   16px inputs are not cosmetic: iOS Safari zooms the viewport on focus for
+   anything smaller, which strands the user mid-form.
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+  select,
+  textarea {
+    font-size: 16px !important;
+    min-height: 44px;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
+  textarea {
+    min-height: 110px;
+  }
+  button[type="submit"] {
+    min-height: 48px;
+  }
+
+  /* Reassurance sidebar unsticks once the layout is a single column. */
+  [data-screen-label="RFQ form"] aside {
+    position: static !important;
+    max-width: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  [data-screen-label="RFQ form"] form {
+    padding: 22px 18px !important;
+    border-radius: 20px !important;
+    gap: 18px !important;
+  }
+  [data-screen-label="RFQ form"] aside > div {
+    padding: 22px 20px !important;
+    border-radius: 20px !important;
+  }
+}
+
+
+/* ==========================================================================
+   12. Product spec tables (basmati-rice, pomegranate)
+   Label/value pairs stack rather than squeeze a 120px label column against
+   the value text.
+   ========================================================================== */
+
+@media (max-width: 480px) {
+  .pr-spec-row {
+    grid-template-columns: 1fr !important;
+    gap: 4px !important;
+    padding: 14px 18px !important;
+  }
+}
+
+
+/* ==========================================================================
+   13. Embedded map (contact.html)
+   ========================================================================== */
+
+@media (max-width: 480px) {
+  [data-screen-label="Contact"] iframe {
+    min-height: 280px !important;
+  }
+}
+
+
+/* ==========================================================================
+   14. Footer
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  footer[data-screen-label="Footer"] {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  footer[data-screen-label="Footer"] {
+    padding: 36px 16px 20px !important;
+  }
+  footer[data-screen-label="Footer"] > div:first-child {
+    grid-template-columns: 1fr !important;
+    gap: 26px !important;
+  }
+  footer[data-screen-label="Footer"] > div:last-child {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+    margin-top: 26px !important;
+  }
+  footer[data-screen-label="Footer"] a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+  }
+}

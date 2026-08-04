@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/responsive.css">
 <script src="assets/support.js"></script>
+<script src="assets/responsive-menu.js"></script>
 </head>
 <body>
 <x-dc>
@@ -32,7 +34,8 @@
           <span style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; color: #8A8069;">INDO AFRICA SARL</span>
         </span>
       </a>
-      <nav style="display: flex; align-items: center; gap: 26px; margin-left: auto; flex-wrap: wrap;">
+      <button type="button" class="pr-burger" data-pr-burger aria-label="Open menu" aria-expanded="false" aria-controls="pr-primary-nav"><span></span><span></span><span></span></button>
+      <nav id="pr-primary-nav" style="display: flex; align-items: center; gap: 26px; margin-left: auto; flex-wrap: wrap;">
         <a href="products.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">Products</a>
         <a href="certifications.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">Certifications</a>
         <a href="how-we-export.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">How We Export</a>
@@ -75,7 +78,7 @@
         </div>
         <div style="background: #14352A; border-radius: 26px; padding: 30px 32px;">
           <div style="font-weight: 700; font-size: 13px; letter-spacing: 0.14em; color: #E8C766; text-transform: uppercase; margin-bottom: 14px;">Verify Us</div>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; font-size: 13.5px; color: #B9CDBF;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 12px; font-size: 13.5px; color: #B9CDBF;">
             <span>IEC 0523098765 <span style="color: #8FA697;">· DGFT portal</span></span>
             <span>GST 27AAKCP1234F1Z5 <span style="color: #8FA697;">· GST portal</span></span>
             <span>APEDA RCMC 154321 <span style="color: #8FA697;">· APEDA</span></span>

@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/responsive.css">
 <script src="assets/support.js"></script>
+<script src="assets/responsive-menu.js"></script>
 </head>
 <body>
 <x-dc>
@@ -32,7 +34,8 @@
           <span style="font-size: 10.5px; font-weight: 600; letter-spacing: 0.22em; color: #8A8069;">INDO AFRICA SARL</span>
         </span>
       </a>
-      <nav style="display: flex; align-items: center; gap: 26px; margin-left: auto; flex-wrap: wrap;">
+      <button type="button" class="pr-burger" data-pr-burger aria-label="Open menu" aria-expanded="false" aria-controls="pr-primary-nav"><span></span><span></span><span></span></button>
+      <nav id="pr-primary-nav" style="display: flex; align-items: center; gap: 26px; margin-left: auto; flex-wrap: wrap;">
         <a href="products.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">Products</a>
         <a href="certifications.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">Certifications</a>
         <a href="how-we-export.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">How We Export</a>
@@ -65,7 +68,7 @@
   <!-- Formats -->
   <section data-screen-label="Formats" style="max-width: 1240px; margin: 0 auto; padding: 44px 24px 12px;">
     <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 40px); color: #14352A; margin: 0 0 26px;">Formats &amp; printing capability</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 18px;">
       <sc-for list="{{ formats }}" as="f" hint-placeholder-count="4">
         <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 24px; padding: 26px 28px;">
           <div style="font-weight: 700; font-size: 16px; color: #14352A;">{{ f.title }}</div>
@@ -79,7 +82,7 @@
   <!-- Process -->
   <section data-screen-label="OEM process" style="max-width: 1240px; margin: 0 auto; padding: 44px 24px 12px;">
     <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 40px); color: #14352A; margin: 0 0 26px;">Artwork to production in four steps</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); gap: 18px;">
       <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
         <div style="background: #14352A; border-radius: 24px; padding: 26px 28px;">
           <span style="display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: rgba(232,199,102,0.14); color: #E8C766; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 24px;">{{ s.n }}</span>
@@ -93,7 +96,7 @@
   <!-- Examples -->
   <section data-screen-label="Examples" style="max-width: 1240px; margin: 0 auto; padding: 44px 24px 12px;">
     <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(28px, 3.4vw, 40px); color: #14352A; margin: 0 0 26px;">Packaging examples <span style="font-family: 'Archivo', sans-serif; font-size: 14px; font-weight: 600; color: #8A8069; vertical-align: middle;">(mocks, clearly labelled)</span></h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 16px;">
       <image-slot id="pl-ex-1" shape="rounded" radius="22" placeholder="Retail rice pouch mock" style="display: block; width: 100%; height: 260px;"></image-slot>
       <image-slot id="pl-ex-2" shape="rounded" radius="22" placeholder="Spice jar / pouch line mock" style="display: block; width: 100%; height: 260px;"></image-slot>
       <image-slot id="pl-ex-3" shape="rounded" radius="22" placeholder="Printed 25 kg bag mock" style="display: block; width: 100%; height: 260px;"></image-slot>
