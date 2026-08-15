@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="assets/responsive.css">
 <script src="assets/support.js"></script>
 <script src="assets/responsive-menu.js"></script>
+<script src="assets/rfq.js"></script>
 </head>
 <body>
 <x-dc>
@@ -146,35 +147,9 @@
         <button type="submit" id="rfq-submit" style="background: #B8912E; color: #FFFFFF; border: none; font-family: 'Archivo', sans-serif; font-size: 16px; font-weight: 600; padding: 16px 28px; border-radius: 999px; cursor: pointer; margin-top: 4px;" style-hover="background: #9E7B24;">Send Enquiry — Quote within 24 Hours</button>
         <p style="font-size: 12.5px; color: #8A8069; margin: 0; text-align: center;">Our export desk typically replies within 24 hours. We never share your details.</p>
       </form>
-
-      <script>
-      (function () {
-        var form = document.forms['rfq'];
-        if (!form) return;
-        var btn = document.getElementById('rfq-submit');
-        var defaultLabel = btn.textContent;
-        var subjectField = document.getElementById('rfq-subject');
-        var productField = document.getElementById('rfq-product');
-        var companyField = document.getElementById('rfq-company');
-
-        // 'invalid' does not bubble — capture phase catches it on any field.
-        form.addEventListener('invalid', function () {
-          btn.disabled = false;
-          btn.textContent = defaultLabel;
-        }, true);
-
-        form.addEventListener('submit', function () {
-          if (!form.checkValidity()) return;
-          if (subjectField) {
-            var product = productField && productField.value ? productField.value : 'Enquiry';
-            var company = companyField && companyField.value ? companyField.value : 'Unknown company';
-            subjectField.value = 'New RFQ — ' + product + ' — ' + company;
-          }
-          btn.disabled = true;
-          btn.textContent = 'Sending…';
-        });
-      })();
-      </script>
+      <!-- Submit behaviour lives in assets/rfq.js, loaded from <head>. It
+           cannot live here: this markup sits inside <x-dc>, and the runtime
+           destroys these nodes on render, taking any listeners with them. -->
     </div>
 
     <!-- ------- REASSURANCE SIDEBAR ------- -->
