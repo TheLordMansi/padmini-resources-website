@@ -1,9 +1,30 @@
 // Netlify auto-invokes this function (by name) on every verified, non-spam
-// submission to any form on the site. Payload shape: { payload: { id, created_at, data: {...} } }
+// submission to any form on the site. Payload shape:
+//   { payload: { id, created_at, form_name, data: {...} } }
 
-const SHEET_TIMEOUT_MS = 8000;
-const WHATSAPP_TIMEOUT_MS = 8000;
-const ALERT_TIMEOUT_MS = 8000;
+// TIMEOUT INVARIANT — do not break this:
+//   max(SHEET_TIMEOUT_MS, WHATSAPP_TIMEOUT_MS) + ALERT_TIMEOUT_MS < 10000
+//
+// Netlify kills a synchronous function at 10s. The Sheet and WhatsApp calls
+// race in parallel, then the alert is sent afterwards, so the worst case is
+// the slower of the two plus the alert. With the previous 8000/8000/8000 that
+// was 16s: the function was killed before the alert POST completed, meaning
+// the alarm was silenced by exactly the failure it exists to report. Anyone
+// raising a timeout must re-check this line first.
+const SHEET_TIMEOUT_MS = 6000;
+const WHATSAPP_TIMEOUT_MS = 4000;
+const ALERT_TIMEOUT_MS = 2500; // worst case 6000 + 2500 = 8.5s
+
+// The form this function is meant to act on. Anything else — notably the
+// agency-alerts form this function itself posts to — is ignored.
+const RFQ_FORM_NAME = 'rfq';
+
+// CallMeBot answers HTTP 200 with the failure written into the response body,
+// so an unactivated or invalid key looks identical to success if you only
+// check the status. These are the markers seen in its error responses.
+// TODO(stage 6): once a real success body is observed during live testing,
+// tighten this into a positive assertion rather than a blocklist.
+const WHATSAPP_ERROR_MARKERS = /error|not valid|invalid|not activated|denied|missing/i;
 
 async function fetchWithTimeout(url, options, timeoutMs) {
   const controller = new AbortController();
@@ -49,8 +70,14 @@ async function pingWhatsApp(data) {
 
   const res = await fetchWithTimeout(url, { method: 'GET' }, WHATSAPP_TIMEOUT_MS);
   const body = await res.text().catch(() => '');
+
   if (!res.ok) {
-    throw new Error(`WhatsApp ping failed: ${res.status} ${body}`);
+    throw new Error(`WhatsApp ping failed: ${res.status} ${body.slice(0, 200)}`);
+  }
+  // The status was 200 — the body is the only thing that distinguishes a
+  // delivered message from a rejected one.
+  if (WHATSAPP_ERROR_MARKERS.test(body)) {
+    throw new Error(`WhatsApp ping rejected (HTTP 200): ${body.slice(0, 200)}`);
   }
   return body;
 }
@@ -107,6 +134,21 @@ export default async (req) => {
   const submissionId = payload.id || '';
   const createdAt = payload.created_at || new Date().toISOString();
 
+  // sendAgencyAlert() posts to a form on this same site, which re-invokes this
+  // function. Without a guard, one outage becomes an infinite loop that burns
+  // the monthly submission quota. Previously this was prevented only by
+  // accident — the alert payload happens to carry no company/email.
+  //
+  // Fails OPEN on an unknown form name: if Netlify ever changes the payload
+  // shape, we would rather process an unexpected submission than silently drop
+  // every RFQ. The loop stays impossible because the alert calls below require
+  // a POSITIVE match on the form name, never merely the absence of one.
+  const formName = payload.form_name || raw['form-name'] || '';
+  const isRfq = formName === RFQ_FORM_NAME;
+  if (formName && !isRfq) {
+    return new Response('ok', { status: 200 });
+  }
+
   const data = {
     id: submissionId,
     created_at: createdAt,
@@ -121,8 +163,22 @@ export default async (req) => {
     consent: raw.consent || '',
   };
 
+  // A field rename upstream would land here forever: every RFQ would skip the
+  // Sheet and WhatsApp silently, and a console line on a low-traffic site is
+  // read by nobody. Alert on it — but only on a positive form-name match, so
+  // this can never fire in response to our own alert.
   if (!submissionId || !data.company || !data.email) {
     console.error('submission-created: missing required fields, skipping side effects', data);
+    if (isRfq) {
+      await sendAgencyAlert(
+        `RFQ pipeline alert — malformed submission ${submissionId || '(no id)'}`,
+        `An RFQ submission arrived without the fields this function needs, so it was NOT written to the Sheet and no WhatsApp ping was sent.\n\n` +
+          `submission id: ${submissionId || '(missing)'}\ncompany: ${data.company || '(missing)'}\nemail: ${data.email || '(missing)'}\n\n` +
+          `This usually means a field was renamed on the form. The Netlify Forms entry itself is safe — check the dashboard submissions list for the raw data.`,
+        submissionId,
+        createdAt
+      );
+    }
     return new Response('ok', { status: 200 });
   }
 
@@ -131,19 +187,20 @@ export default async (req) => {
     pingWhatsApp(data),
   ]);
 
-  const failures = [];
-  if (sheetResult.status === 'rejected') {
-    failures.push(`Sheet: ${sheetResult.reason}`);
-  }
+  // Severity routing. The Sheet is the working copy the client actually uses,
+  // so losing a write is worth an email. CallMeBot is an unofficial free relay
+  // with no SLA that will fail routinely — alerting on it would fill the inbox
+  // with noise until the one alert that matters gets filtered away.
   if (whatsappResult.status === 'rejected') {
-    failures.push(`WhatsApp: ${whatsappResult.reason}`);
+    console.error('submission-created: WhatsApp ping failed (not alerted):', whatsappResult.reason);
   }
 
-  if (failures.length > 0) {
-    console.error('submission-created: side-effect failure(s)', failures);
+  if (sheetResult.status === 'rejected') {
+    console.error('submission-created: Sheet write failed', sheetResult.reason);
     await sendAgencyAlert(
-      `RFQ pipeline alert — submission ${submissionId}`,
-      `One or more side-effects failed for RFQ submission ${submissionId} (${data.company}, ${createdAt}):\n\n${failures.join('\n')}\n\nThe Netlify Forms entry itself is safe — check the Netlify dashboard submissions list for the raw data.`,
+      `RFQ pipeline alert — Sheet write failed for ${submissionId}`,
+      `The Google Sheet write failed for RFQ submission ${submissionId} (${data.company}, ${createdAt}):\n\n${sheetResult.reason}\n\n` +
+        `The Netlify Forms entry itself is safe — check the Netlify dashboard submissions list for the raw data and add the row by hand if needed.`,
       submissionId,
       createdAt
     );
