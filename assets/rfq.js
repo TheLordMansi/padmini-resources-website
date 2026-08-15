@@ -75,33 +75,43 @@
     }
   }
 
-  // Returns true once the form exists — i.e. there is no longer any reason to
-  // keep watching, whether or not a value was actually applied.
+  // The runtime renders this page more than once. Measured on the live site:
+  // the <select> appears at ~635ms, and a second pass resets its value at
+  // ~685ms. A one-shot prefill is therefore applied and then silently undone,
+  // so keep re-applying across a bounded window rather than stopping at the
+  // first success.
+
+  var buyerChoseProduct = false;
+  document.addEventListener('change', function (e) {
+    var field = e.target;
+    if (field && field.name === 'product' && isRfqForm(field.form)) {
+      buyerChoseProduct = true;
+    }
+  }, true);
+
   function applyPrefill(value) {
     var select = document.querySelector('form[name="' + FORM_NAME + '"] select[name="product"]');
-    if (!select) return false;
+    // Never override a choice the buyer has made, and never re-set a value
+    // that is already in place.
+    if (!select || buyerChoseProduct || select.value) return;
 
-    // Never override a choice the buyer has already made.
-    if (!select.value) {
-      for (var i = 0; i < select.options.length; i++) {
-        if (select.options[i].value === value) {
-          select.value = value;
-          break;
-        }
+    for (var i = 0; i < select.options.length; i++) {
+      if (select.options[i].value === value) {
+        select.value = value;
+        return;
       }
-      // An unrecognised ?product= leaves the dropdown untouched rather than
-      // pushing a value the <select> cannot represent.
     }
-    return true;
+    // An unrecognised ?product= leaves the dropdown untouched rather than
+    // pushing a value the <select> cannot represent.
   }
 
   var wanted = requestedProduct();
-  if (wanted && !applyPrefill(wanted)) {
-    var observer = new MutationObserver(function () {
-      if (applyPrefill(wanted)) observer.disconnect();
-    });
-    observer.observe(document.documentElement, { childList: true, subtree: true });
-    // Never observe indefinitely, even if the form never renders.
-    setTimeout(function () { observer.disconnect(); }, 10000);
+  if (wanted) {
+    applyPrefill(wanted);
+    var observer = new MutationObserver(function () { applyPrefill(wanted); });
+    observer.observe(document, { childList: true, subtree: true });
+    // Bounded: long enough to outlast the runtime's render passes, short
+    // enough not to watch the document for the life of the page.
+    setTimeout(function () { observer.disconnect(); }, 5000);
   }
 })();
