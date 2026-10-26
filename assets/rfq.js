@@ -120,6 +120,10 @@
     }
   }, true);
 
+  function squash(s) {
+    return String(s).toLowerCase().replace(/[^a-z0-9]/g, '');
+  }
+
   function applyPrefill(value) {
     var form = rfqForm();
     var select = form && form.elements.product;
@@ -127,9 +131,13 @@
     // that is already in place.
     if (!select || buyerChoseProduct || select.value) return;
 
+    // Detail pages link with URL slugs (?product=basmati-rice) while the option
+    // values are display names ("Basmati Rice"), so compare with case and
+    // punctuation stripped.
+    var key = squash(value);
     for (var i = 0; i < select.options.length; i++) {
-      if (select.options[i].value === value) {
-        select.value = value;
+      if (select.options[i].value && squash(select.options[i].value) === key) {
+        select.value = select.options[i].value;
         return;
       }
     }

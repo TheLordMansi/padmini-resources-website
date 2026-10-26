@@ -45,7 +45,7 @@
         <a href="contact.html" style="text-decoration: none; color: #3D4A41; font-size: 14.5px; font-weight: 500;" style-hover="color: #0E6B45;">Contact</a>
       </nav>
       <div style="display: flex; align-items: center; gap: 10px;">
-        <a href="{{ waLink }}" style="display: inline-flex; align-items: center; gap: 8px; background: #1FA362; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 600; padding: 10px 18px; border-radius: 999px;" style-hover="background: #178A52;">
+        <a href="https://wa.me/919767766731?text=Hi%2C%20I%27m%20interested%20in%20Fresh%20Pomegranate" style="display: inline-flex; align-items: center; gap: 8px; background: #1FA362; color: #FFFFFF; text-decoration: none; font-size: 14px; font-weight: 600; padding: 10px 18px; border-radius: 999px;" style-hover="background: #178A52;">
           <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #C9F2DC;"></span>
           WhatsApp
         </a>
@@ -63,179 +63,267 @@
     <span style="color: #14352A; font-weight: 600;">Fresh Pomegranate</span>
   </div>
 
-  <!-- ============ MAIN LAYOUT: CONTENT + STICKY SIDEBAR ============ -->
-  <div data-screen-label="Product detail" style="max-width: 1240px; margin: 0 auto; padding: 20px 24px 56px; display: flex; flex-wrap: wrap; gap: 28px; align-items: flex-start;">
-
-    <!-- ------- LEFT COLUMN ------- -->
-    <div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 44px;">
-
-      <!-- Title + gallery -->
-      <section>
-        <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 8px;">Fresh Produce</p>
-        <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(34px, 4.4vw, 52px); color: #14352A; margin: 0 0 8px; line-height: 1.08;">Fresh Pomegranate</h1>
-        <p style="font-size: 16px; color: #3D4A41; margin: 0 0 24px; max-width: 620px; text-wrap: pretty;">Bhagwa variety from registered farms in Maharashtra — deep-red arils, high Brix, packed and pre-cooled in-house for sea and air shipment.</p>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); grid-auto-rows: 200px; gap: 14px;">
-          <image-slot id="pom-hero" shape="rounded" radius="24" placeholder="Whole pomegranates, close-up" style="display: block; width: 100%; height: 100%; grid-column: 1 / -1; grid-row: span 2;"></image-slot>
-          <image-slot id="pom-arils" shape="rounded" radius="24" placeholder="Cut fruit — arils detail" style="display: block; width: 100%; height: 100%;"></image-slot>
-          <image-slot id="pom-cartons" shape="rounded" radius="24" placeholder="Packed cartons on line" style="display: block; width: 100%; height: 100%;"></image-slot>
-          <image-slot id="pom-loading" shape="rounded" radius="24" placeholder="Reefer loading at packhouse" style="display: block; width: 100%; height: 100%;"></image-slot>
-        </div>
-      </section>
-
-      <!-- Spec table -->
-      <section>
-        <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(26px, 3vw, 34px); color: #14352A; margin: 0 0 18px;">Product specification</h2>
-        <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 24px; overflow: hidden;">
-          <sc-for list="{{ specs }}" as="row" hint-placeholder-count="8">
-            <div class="pr-spec-row" style="display: grid; grid-template-columns: minmax(120px, 220px) 1fr; gap: 16px; padding: 15px 26px; border-bottom: 1px solid #F0EBDD;">
-              <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069; text-transform: uppercase; padding-top: 1px;">{{ row.label }}</span>
-              <span style="font-size: 14.5px; color: #1C231E; font-weight: 500;">{{ row.value }}</span>
-            </div>
-          </sc-for>
-        </div>
-      </section>
-
-      <!-- Availability strip -->
-      <section>
-        <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(26px, 3vw, 34px); color: #14352A; margin: 0 0 18px;">Availability</h2>
-        <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 24px; padding: 24px 26px; overflow-x: auto;">
-          <div style="min-width: 620px;">
-            <div style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 6px;">
-              <sc-for list="{{ availability }}" as="m" hint-placeholder-count="12">
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-                  <span style="font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069;">{{ m.label }}</span>
-                  <span style="display: block; width: 100%; height: 34px; border-radius: 999px; background: {{ m.bg }};"></span>
-                </div>
-              </sc-for>
-            </div>
-            <div style="display: flex; gap: 20px; margin-top: 16px; align-items: center;">
-              <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; color: #3D4A41;"><span style="width: 22px; height: 12px; border-radius: 999px; background: #1FA362; display: inline-block;"></span> Available for export</span>
-              <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; color: #3D4A41;"><span style="width: 22px; height: 12px; border-radius: 999px; background: #F0EBDD; display: inline-block;"></span> Off season</span>
-            </div>
-            <p style="font-size: 13.5px; color: #3D4A41; margin: 14px 0 0;">Peak volumes January–April and August–December. Programmed weekly supply available in season — book slots 3–4 weeks ahead.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Cold chain -->
-      <section>
-        <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(26px, 3vw, 34px); color: #14352A; margin: 0 0 18px;">Cold-chain handling</h2>
-        <div style="background: #14352A; border-radius: 26px; padding: 34px 34px 30px;">
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr)); gap: 24px;">
-            <sc-for list="{{ coldChain }}" as="stage" hint-placeholder-count="4">
-              <div>
-                <span style="display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%; background: rgba(232,199,102,0.14); color: #E8C766; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 22px;">{{ stage.n }}</span>
-                <div style="font-weight: 700; font-size: 15px; color: #FCFAF4; margin-top: 14px;">{{ stage.title }}</div>
-                <div style="font-size: 13.5px; color: #B9CDBF; margin-top: 6px;">{{ stage.desc }}</div>
-              </div>
-            </sc-for>
-          </div>
-          <div style="margin-top: 28px; padding-top: 22px; border-top: 1px solid rgba(185,205,191,0.22); display: flex; gap: 26px; flex-wrap: wrap; font-size: 13.5px; color: #B9CDBF;">
-            <span><strong style="color: #E8C766; font-weight: 700;">5 °C</strong> &nbsp;carriage temperature</span>
-            <span><strong style="color: #E8C766; font-weight: 700;">90–95%</strong> &nbsp;relative humidity</span>
-            <span><strong style="color: #E8C766; font-weight: 700;">25 CBM</strong> &nbsp;fresh-air exchange</span>
-            <span><strong style="color: #E8C766; font-weight: 700;">USB logger</strong> &nbsp;in every container</span>
-          </div>
-        </div>
-      </section>
-
+  <!-- ============ 1. HERO ============ -->
+  <section data-screen-label="Product hero" style="max-width: 1240px; margin: 0 auto; padding: 20px 24px 20px; display: flex; flex-wrap: wrap; gap: 36px; align-items: center;">
+    <div style="flex: 1 1 420px; min-width: 0;">
+      <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 10px;">Fresh Produce</p>
+      <h1 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(38px, 5vw, 60px); color: #14352A; margin: 0 0 14px; line-height: 1.06;">Fresh Pomegranate</h1>
+      <p style="font-size: 17px; color: #3D4A41; margin: 0 0 28px; max-width: 520px; text-wrap: pretty;">Premium Indian Bhagwa pomegranate — export-grade, cold-chain assured, APEDA certified</p>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="request-a-quote.html?product=pomegranate" style="display: inline-flex; align-items: center; background: #B8912E; color: #FFFFFF; text-decoration: none; font-size: 15.5px; font-weight: 600; padding: 15px 30px; border-radius: 999px;" style-hover="background: #D0A93C;">Request a Quote</a>
+        <a href="https://wa.me/919767766731?text=Hi%2C%20I%27m%20interested%20in%20Fresh%20Pomegranate" style="display: inline-flex; align-items: center; gap: 8px; background: #1FA362; color: #FFFFFF; text-decoration: none; font-size: 15.5px; font-weight: 600; padding: 15px 30px; border-radius: 999px;" style-hover="background: #178A52;">
+          <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #C9F2DC;"></span>
+          WhatsApp
+        </a>
+      </div>
     </div>
+    <div style="flex: 1 1 420px; min-width: 0;">
+      <image-slot id="ph-pomegranate-hero" shape="rounded" radius="28" placeholder="Fresh Bhagwa pomegranates, export grade" style="display: block; width: 100%; height: 420px;"></image-slot>
+    </div>
+  </section>
 
-    <!-- ------- STICKY SIDEBAR ------- -->
-    <aside style="flex: 1 1 300px; max-width: 360px; position: sticky; top: 96px; display: flex; flex-direction: column; gap: 16px;">
-      <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; padding: 26px 26px 28px;">
-        <div style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 24px; color: #14352A;">Start an enquiry</div>
-        <p style="font-size: 13.5px; color: #3D4A41; margin: 8px 0 20px;">Firm offer within 24 hours. Tell us grade, count, volume and destination port.</p>
-        <div style="display: flex; flex-direction: column; gap: 10px;">
-          <a href="request-a-quote.html?product=Pomegranate" style="display: flex; align-items: center; justify-content: center; background: #B8912E; color: #FFFFFF; text-decoration: none; font-size: 15px; font-weight: 600; padding: 14px 20px; border-radius: 999px;" style-hover="background: #9E7B24;">Request a Quote</a>
-          <a href="request-a-quote.html?product=Pomegranate" style="display: flex; align-items: center; justify-content: center; background: #FFFFFF; border: 1.5px solid #14352A; color: #14352A; text-decoration: none; font-size: 15px; font-weight: 600; padding: 13px 20px; border-radius: 999px;" style-hover="background: #EFF5EC;">Request a Sample</a>
-          <a href="{{ waLink }}" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: #1FA362; color: #FFFFFF; text-decoration: none; font-size: 15px; font-weight: 600; padding: 14px 20px; border-radius: 999px;" style-hover="background: #178A52;">
-            <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #C9F2DC;"></span>
-            Chat on WhatsApp
-          </a>
+  <!-- ============ 2. QUICK SPECS ============ -->
+  <section data-screen-label="Quick specs" style="max-width: 1240px; margin: 0 auto; padding: 48px 24px 20px;">
+    <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 10px;">At a Glance</p>
+    <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 42px); color: #14352A; margin: 0 0 26px;">Quick specifications</h2>
+    <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 24px; overflow: hidden;">
+      <div class="pr-spec-row" style="display: grid; grid-template-columns: minmax(120px, 240px) 1fr; gap: 16px; padding: 15px 26px; background: #FFFFFF; border-bottom: 1px solid #F0EBDD;">
+        <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069; text-transform: uppercase; padding-top: 1px;">HS Code</span>
+        <span style="font-size: 14.5px; color: #1C231E; font-weight: 500;">0810.90</span>
+      </div>
+      <div class="pr-spec-row" style="display: grid; grid-template-columns: minmax(120px, 240px) 1fr; gap: 16px; padding: 15px 26px; background: #F7F3E8; border-bottom: 1px solid #F0EBDD;">
+        <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069; text-transform: uppercase; padding-top: 1px;">Origin</span>
+        <span style="font-size: 14.5px; color: #1C231E; font-weight: 500;">Solapur, Nashik, Ahmednagar, Sangli (Maharashtra)</span>
+      </div>
+      <div class="pr-spec-row" style="display: grid; grid-template-columns: minmax(120px, 240px) 1fr; gap: 16px; padding: 15px 26px; background: #FFFFFF; border-bottom: 1px solid #F0EBDD;">
+        <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069; text-transform: uppercase; padding-top: 1px;">Varieties</span>
+        <span style="font-size: 14.5px; color: #1C231E; font-weight: 500;">Bhagwa (primary export variety)</span>
+      </div>
+      <div class="pr-spec-row" style="display: grid; grid-template-columns: minmax(120px, 240px) 1fr; gap: 16px; padding: 15px 26px; background: #F7F3E8; border-bottom: 1px solid #F0EBDD;">
+        <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069; text-transform: uppercase; padding-top: 1px;">Grades</span>
+        <span style="font-size: 14.5px; color: #1C231E; font-weight: 500;">Super, King, Premium (by fruit weight/size)</span>
+      </div>
+      <div class="pr-spec-row" style="display: grid; grid-template-columns: minmax(120px, 240px) 1fr; gap: 16px; padding: 15px 26px; background: #FFFFFF; border-bottom: 1px solid #F0EBDD;">
+        <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069; text-transform: uppercase; padding-top: 1px;">Size</span>
+        <span style="font-size: 14.5px; color: #1C231E; font-weight: 500;">200g–500g per fruit; count 8–16 per 3.5kg box</span>
+      </div>
+      <div class="pr-spec-row" style="display: grid; grid-template-columns: minmax(120px, 240px) 1fr; gap: 16px; padding: 15px 26px; background: #F7F3E8; border-bottom: 1px solid #F0EBDD;">
+        <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069; text-transform: uppercase; padding-top: 1px;">Packaging</span>
+        <span style="font-size: 14.5px; color: #1C231E; font-weight: 500;">3.5 kg telescopic carton, 5 kg carton</span>
+      </div>
+      <div class="pr-spec-row" style="display: grid; grid-template-columns: minmax(120px, 240px) 1fr; gap: 16px; padding: 15px 26px; background: #FFFFFF; border-bottom: 1px solid #F0EBDD;">
+        <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069; text-transform: uppercase; padding-top: 1px;">Container Loading</span>
+        <span style="font-size: 14.5px; color: #1C231E; font-weight: 500;">~5,500 cartons (3.5kg) per 40ft reefer</span>
+      </div>
+      <div class="pr-spec-row" style="display: grid; grid-template-columns: minmax(120px, 240px) 1fr; gap: 16px; padding: 15px 26px; background: #F7F3E8; border-bottom: 1px solid #F0EBDD;">
+        <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069; text-transform: uppercase; padding-top: 1px;">MOQ</span>
+        <span style="font-size: 14.5px; color: #1C231E; font-weight: 500;">1 x 40ft reefer container</span>
+      </div>
+      <div class="pr-spec-row" style="display: grid; grid-template-columns: minmax(120px, 240px) 1fr; gap: 16px; padding: 15px 26px; background: #FFFFFF; border-bottom: 1px solid #F0EBDD;">
+        <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069; text-transform: uppercase; padding-top: 1px;">Shelf Life</span>
+        <span style="font-size: 14.5px; color: #1C231E; font-weight: 500;">40–60 days at 5–7°C</span>
+      </div>
+      <div class="pr-spec-row" style="display: grid; grid-template-columns: minmax(120px, 240px) 1fr; gap: 16px; padding: 15px 26px; background: #F7F3E8; border-bottom: 1px solid #F0EBDD;">
+        <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069; text-transform: uppercase; padding-top: 1px;">Certifications</span>
+        <span style="font-size: 14.5px; color: #1C231E; font-weight: 500;">APEDA, FSSAI, GlobalGAP</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. AVAILABILITY & COLD CHAIN ============ -->
+  <section data-screen-label="Seasonality" style="max-width: 1240px; margin: 0 auto; padding: 48px 24px 20px;">
+    <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 10px;">Plan Your Season</p>
+    <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 42px); color: #14352A; margin: 0 0 26px;">Availability</h2>
+    <div style="background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 26px; padding: 28px; overflow-x: auto;">
+      <div style="min-width: 760px;">
+        <div style="display: grid; grid-template-columns: 140px repeat(12, 1fr); gap: 6px; align-items: center; margin-bottom: 6px;">
+          <span></span>
+          <span style="text-align: center; font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069;">JAN</span>
+          <span style="text-align: center; font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069;">FEB</span>
+          <span style="text-align: center; font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069;">MAR</span>
+          <span style="text-align: center; font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069;">APR</span>
+          <span style="text-align: center; font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069;">MAY</span>
+          <span style="text-align: center; font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069;">JUN</span>
+          <span style="text-align: center; font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069;">JUL</span>
+          <span style="text-align: center; font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069;">AUG</span>
+          <span style="text-align: center; font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069;">SEP</span>
+          <span style="text-align: center; font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069;">OCT</span>
+          <span style="text-align: center; font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069;">NOV</span>
+          <span style="text-align: center; font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; color: #8A8069;">DEC</span>
         </div>
-        <div style="margin-top: 18px; padding-top: 16px; border-top: 1px solid #F0EBDD;">
-          <a href="#" onClick="{{ downloadSpec }}" style="display: flex; align-items: center; justify-content: center; gap: 10px; color: #0E6B45; text-decoration: none; font-size: 14px; font-weight: 700;" style-hover="color: #B8912E;">
-            <span style="display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; background: #EFF5EC; font-size: 15px;">↓</span>
-            Download spec sheet (PDF)
-          </a>
+        <div style="display: grid; grid-template-columns: 140px repeat(12, 1fr); gap: 6px; align-items: center; margin-bottom: 6px;">
+          <span style="font-weight: 600; font-size: 14.5px; color: #14352A;">Pomegranate</span>
+          <span style="display: block; height: 30px; border-radius: 999px; background: #1FA362;"></span>
+          <span style="display: block; height: 30px; border-radius: 999px; background: #1FA362;"></span>
+          <span style="display: block; height: 30px; border-radius: 999px; background: #F0EBDD;"></span>
+          <span style="display: block; height: 30px; border-radius: 999px; background: #F0EBDD;"></span>
+          <span style="display: block; height: 30px; border-radius: 999px; background: #F0EBDD;"></span>
+          <span style="display: block; height: 30px; border-radius: 999px; background: #F0EBDD;"></span>
+          <span style="display: block; height: 30px; border-radius: 999px; background: #F0EBDD;"></span>
+          <span style="display: block; height: 30px; border-radius: 999px; background: #F0EBDD;"></span>
+          <span style="display: block; height: 30px; border-radius: 999px; background: #1FA362;"></span>
+          <span style="display: block; height: 30px; border-radius: 999px; background: #1FA362;"></span>
+          <span style="display: block; height: 30px; border-radius: 999px; background: #1FA362;"></span>
+          <span style="display: block; height: 30px; border-radius: 999px; background: #1FA362;"></span>
+        </div>
+        <div style="display: flex; gap: 20px; margin-top: 16px; align-items: center;">
+          <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; color: #3D4A41;"><span style="width: 22px; height: 12px; border-radius: 999px; background: #1FA362; display: inline-block;"></span> Available for export</span>
+          <span style="display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; color: #3D4A41;"><span style="width: 22px; height: 12px; border-radius: 999px; background: #F0EBDD; display: inline-block;"></span> Off season</span>
         </div>
       </div>
-      <div style="background: #EFF5EC; border-radius: 22px; padding: 20px 24px; font-size: 13px; color: #14352A; line-height: 1.6;">
-        <strong style="font-weight: 700;">APEDA &amp; FSSAI certified</strong> · Phytosanitary certificate, COO and COA supplied with every consignment.
+    </div>
+  </section>
+
+  <section data-screen-label="Cold chain" style="max-width: 1240px; margin: 0 auto; padding: 28px 24px 20px;">
+    <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 42px); color: #14352A; margin: 0 0 26px;">Cold chain</h2>
+    <div style="background: #14352A; border-radius: 26px; padding: 34px 34px 30px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr)); gap: 24px;">
+        <div><div style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 30px; color: #E8C766; line-height: 1.1;">5°C</div><div style="font-size: 13.5px; color: #B9CDBF; margin-top: 4px;">Pre-cooling</div></div>
+        <div><div style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 30px; color: #E8C766; line-height: 1.1;">5–7°C</div><div style="font-size: 13.5px; color: #B9CDBF; margin-top: 4px;">Storage</div></div>
+        <div><div style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 30px; color: #E8C766; line-height: 1.1;">5°C</div><div style="font-size: 13.5px; color: #B9CDBF; margin-top: 4px;">Reefer transit</div></div>
+        <div><div style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 30px; color: #E8C766; line-height: 1.1;">5–7 days</div><div style="font-size: 13.5px; color: #B9CDBF; margin-top: 4px;">Transit to Gulf</div></div>
+        <div><div style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 30px; color: #E8C766; line-height: 1.1;">18–22 days</div><div style="font-size: 13.5px; color: #B9CDBF; margin-top: 4px;">Transit to EU</div></div>
       </div>
-    </aside>
+      <div style="margin-top: 28px; padding-top: 22px; border-top: 1px solid rgba(185,205,191,0.22);">
+        <div style="font-weight: 700; font-size: 12.5px; letter-spacing: 0.16em; color: #E8C766; text-transform: uppercase; margin-bottom: 16px;">Harvest to ship</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 18px 24px;">
+          <div style="display: flex; align-items: center; gap: 12px; flex: 1 1 200px;">
+            <span style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(232,199,102,0.14); color: #E8C766; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 20px; flex-shrink: 0;">1</span>
+            <span style="font-weight: 600; font-size: 14.5px; color: #FCFAF4;">Harvested</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px; flex: 1 1 200px;">
+            <span style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(232,199,102,0.14); color: #E8C766; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 20px; flex-shrink: 0;">2</span>
+            <span style="font-weight: 600; font-size: 14.5px; color: #FCFAF4;">Pre-cooled to 5°C within 6 hours</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px; flex: 1 1 200px;">
+            <span style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(232,199,102,0.14); color: #E8C766; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 20px; flex-shrink: 0;">3</span>
+            <span style="font-weight: 600; font-size: 14.5px; color: #FCFAF4;">Graded &amp; packed</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 12px; flex: 1 1 200px;">
+            <span style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: rgba(232,199,102,0.14); color: #E8C766; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 20px; flex-shrink: 0;">4</span>
+            <span style="font-weight: 600; font-size: 14.5px; color: #FCFAF4;">Shipped within 48 hours</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  </div>
+  <!-- ============ 4. SPEC SHEET ============ -->
+  <section data-screen-label="Spec sheet" style="max-width: 1240px; margin: 0 auto; padding: 28px 24px 20px;">
+    <div style="background: #EFF5EC; border-radius: 24px; padding: 28px 30px; display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between;">
+      <div style="flex: 1 1 320px;">
+        <div style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 26px; color: #14352A;">Product spec sheet</div>
+        <p style="font-size: 14.5px; color: #3D4A41; margin: 6px 0 0;">Grades, counts, packing and cold-chain parameters in one printable document.</p>
+      </div>
+      <a href="pomegranate-spec-sheet.pdf" download style="display: inline-flex; align-items: center; gap: 10px; background: #14352A; color: #FFFFFF; text-decoration: none; font-size: 15px; font-weight: 600; padding: 14px 26px; border-radius: 999px;" style-hover="background: #0E6B45;">
+        <span aria-hidden="true">↓</span>
+        Download Product Spec Sheet (PDF)
+      </a>
+    </div>
+  </section>
 
-  <!-- ============ FOOTER (compact) ============ -->
-  <footer data-screen-label="Footer" style="background: #0E271F; color: #B9CDBF; padding: 34px 24px;">
-    <div style="max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 12.5px; color: #8FA697;">
-      <span>Padmini Resources Indo Africa SARL · IEC 0523098765 · GST 27AAKCP1234F1Z5</span>
-      <a href="index.html" style="color: #B9CDBF; text-decoration: none;" style-hover="color: #FCFAF4;">← Back to home</a>
-      <span>© 2026 All rights reserved.</span>
+  <!-- ============ 5. RELATED PRODUCTS ============ -->
+  <section data-screen-label="Related products" style="max-width: 1240px; margin: 0 auto; padding: 48px 24px 20px;">
+    <p style="font-size: 12.5px; font-weight: 700; letter-spacing: 0.22em; color: #B8912E; text-transform: uppercase; margin: 0 0 10px;">Also From Our Farms</p>
+    <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(30px, 3.6vw, 42px); color: #14352A; margin: 0 0 26px;">Related products</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: 18px;">
+      <a href="grapes.html" style="display: block; background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 24px; overflow: hidden; text-decoration: none; color: inherit;" style-hover="border-color: #B8912E;">
+        <image-slot id="rel-grapes" shape="rect" placeholder="Table grapes packed" style="display: block; width: 100%; height: 180px;"></image-slot>
+        <div style="padding: 18px 22px 22px;">
+          <div style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 24px; color: #14352A;">Table Grapes</div>
+          <p style="font-size: 14px; color: #3D4A41; margin: 6px 0 14px;">Thompson Seedless and Sharad Seedless, packed and pre-cooled for sea and air shipment.</p>
+          <span style="font-size: 14px; font-weight: 700; color: #0E6B45;">View Table Grapes →</span>
+        </div>
+      </a>
+      <a href="mango.html" style="display: block; background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 24px; overflow: hidden; text-decoration: none; color: inherit;" style-hover="border-color: #B8912E;">
+        <image-slot id="rel-mango" shape="rect" placeholder="Mangoes in tray pack" style="display: block; width: 100%; height: 180px;"></image-slot>
+        <div style="padding: 18px 22px 22px;">
+          <div style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 24px; color: #14352A;">Mango</div>
+          <p style="font-size: 14px; color: #3D4A41; margin: 6px 0 14px;">Alphonso, Kesar and Banganapalli, with air and sea options.</p>
+          <span style="font-size: 14px; font-weight: 700; color: #0E6B45;">View Mango →</span>
+        </div>
+      </a>
+      <a href="onion.html" style="display: block; background: #FFFFFF; border: 1px solid #E6DFD0; border-radius: 24px; overflow: hidden; text-decoration: none; color: inherit;" style-hover="border-color: #B8912E;">
+        <image-slot id="rel-onion" shape="rect" placeholder="Red onions in mesh bags" style="display: block; width: 100%; height: 180px;"></image-slot>
+        <div style="padding: 18px 22px 22px;">
+          <div style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 24px; color: #14352A;">Onion</div>
+          <p style="font-size: 14px; color: #3D4A41; margin: 6px 0 14px;">Red and pink onions, 40–60 mm+, in 5–25 kg mesh bags for bulk container loads.</p>
+          <span style="font-size: 14px; font-weight: 700; color: #0E6B45;">View Onion →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ 6. FINAL CTA ============ -->
+  <section data-screen-label="Final CTA" style="max-width: 1240px; margin: 0 auto; padding: 48px 24px;">
+    <div style="background: #14352A; border-radius: 30px; padding: 60px 44px; text-align: center;">
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(30px, 4vw, 46px); color: #FCFAF4; margin: 0 auto 14px; max-width: 640px; text-wrap: pretty;">Get a quote for Fresh Pomegranate</h2>
+      <p style="font-size: 15.5px; color: #B9CDBF; margin: 0 0 30px;">Send your grade, volume and port of discharge. We reply with a firm offer.</p>
+      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+        <a href="request-a-quote.html?product=pomegranate" style="display: inline-flex; align-items: center; background: #B8912E; color: #FFFFFF; text-decoration: none; font-size: 15.5px; font-weight: 600; padding: 15px 30px; border-radius: 999px;" style-hover="background: #D0A93C;">Request a Quote</a>
+        <a href="https://wa.me/919767766731?text=Hi%2C%20I%27m%20interested%20in%20Fresh%20Pomegranate" style="display: inline-flex; align-items: center; gap: 8px; background: #1FA362; color: #FFFFFF; text-decoration: none; font-size: 15.5px; font-weight: 600; padding: 15px 30px; border-radius: 999px;" style-hover="background: #178A52;">
+          <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #C9F2DC;"></span>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 13. FOOTER ============ -->
+  <footer data-screen-label="Footer" style="background: #0E271F; color: #B9CDBF; padding: 56px 24px 28px;">
+    <div style="max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 36px;">
+      <div>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+          <span style="display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; border-radius: 50%; background: #FFFFFF; overflow: hidden;">
+            <img src="images/logo.png" alt="Padmini Resources logo" style="width: 38px; height: 38px; object-fit: contain;">
+          </span>
+          <span style="font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 19px; color: #FCFAF4; line-height: 1.15;">Padmini Resources<br>Indo Africa SARL</span>
+        </div>
+        <p style="font-size: 13.5px; margin: 0; line-height: 1.7;">B.P. 23, Aneho, Lome,<br>Togo, West Africa</p>
+      </div>
+      <div>
+        <div style="font-weight: 700; font-size: 12.5px; letter-spacing: 0.16em; color: #E8C766; text-transform: uppercase; margin-bottom: 14px;">Registration</div>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13.5px;">
+          <span>IEC No. AAMCP9797N</span>
+          <span>GST No. 27AAKCP1234F1Z5</span>
+          <span>APEDA RCMC 220555</span>
+          <span>Spices Board Regd.</span>
+          <span>Coconut Board Regd.</span>
+          <span>Udyam Regd.</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight: 700; font-size: 12.5px; letter-spacing: 0.16em; color: #E8C766; text-transform: uppercase; margin-bottom: 14px;">Quick Links</div>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13.5px;">
+          <a href="products.html" style="color: #B9CDBF; text-decoration: none;" style-hover="color: #FCFAF4;">Products</a>
+          <a href="certifications.html" style="color: #B9CDBF; text-decoration: none;" style-hover="color: #FCFAF4;">Certifications</a>
+          <a href="how-we-export.html" style="color: #B9CDBF; text-decoration: none;" style-hover="color: #FCFAF4;">How We Export</a>
+          <a href="contact.html" style="color: #B9CDBF; text-decoration: none;" style-hover="color: #FCFAF4;">Contact</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-weight: 700; font-size: 12.5px; letter-spacing: 0.16em; color: #E8C766; text-transform: uppercase; margin-bottom: 14px;">Contact</div>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 13.5px;">
+          <a href="mailto:presources5@gmail.com" style="color: #B9CDBF; text-decoration: none;" style-hover="color: #FCFAF4;">presources5@gmail.com</a>
+          <a href="tel:+22891331555" style="color: #B9CDBF; text-decoration: none;" style-hover="color: #FCFAF4;">West Africa: +228 91 33 15 55</a>
+          <a href="tel:+919767766731" style="color: #B9CDBF; text-decoration: none;" style-hover="color: #FCFAF4;">India: +91 97 67 76 67 31</a>
+          <a href="https://wa.me/919767766731" style="color: #B9CDBF; text-decoration: none;" style-hover="color: #FCFAF4;">WhatsApp Business</a>
+        </div>
+      </div>
+    </div>
+    <div style="max-width: 1240px; margin: 36px auto 0; padding-top: 22px; border-top: 1px solid rgba(185,205,191,0.22); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 12.5px; color: #8FA697;">
+      <span>IEC · APEDA · Spices Board · Coconut Board · Udyam registered</span>
+      <span>© 2026 Padmini Resources Indo Africa SARL. All rights reserved.</span>
     </div>
   </footer>
+
 
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1280, &quot;height&quot;: 900}}">
 class Component extends DCLogic {
   renderVals() {
-    const monthsOn = [1,1,1,1,0,0,0,1,1,1,1,1];
-    const labels = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
-    return {
-      waLink: 'https://wa.me/919767766731?text=Enquiry%3A%20Fresh%20Pomegranate',
-      availability: labels.map((label, i) => ({ label, bg: monthsOn[i] ? '#1FA362' : '#F0EBDD' })),
-      specs: [
-        { label: 'Variety', value: 'Bhagwa (Kesar-red skin, soft-seeded)' },
-        { label: 'Grade', value: 'Export Grade A — uniform colour, blemish-free, min. 16° Brix' },
-        { label: 'Size / Count', value: '200–250 g (12–14 count) · 250–300 g (10–12) · 300–350 g (8–10) per 3 kg box' },
-        { label: 'Packaging options', value: '3 kg / 3.5 kg ventilated corrugated boxes; single-fruit sleeve or tray pack; private-label cartons on request' },
-        { label: 'MOQ', value: '1 × 20 ft reefer (≈ 6,500 kg); air-freight trial from 500 kg' },
-        { label: 'HS Code', value: '0810 90 10' },
-        { label: 'Shelf life', value: '60 days at 5 °C, 90–95% RH (cold chain maintained)' },
-        { label: 'Origin', value: 'Solapur & Nashik districts, Maharashtra, India — APEDA-registered farms' },
-      ],
-      coldChain: [
-        { n: '1', title: 'Field heat removal', desc: 'Harvested fruit reaches the packhouse within 6 hours and is pre-cooled to 5 °C.' },
-        { n: '2', title: 'Graded & packed at 12 °C', desc: 'Sorting, sizing and packing in a temperature-controlled hall.' },
-        { n: '3', title: 'Cold store staging', desc: 'Palletised cartons held at 5 °C until container stuffing.' },
-        { n: '4', title: 'Reefer to port', desc: 'Temperature-logged reefer, genset-backed haulage to Nhava Sheva / Mumbai.' },
-      ],
-      downloadSpec: (e) => {
-        e.preventDefault();
-        const rows = [
-          ['Product', 'Fresh Pomegranate (Bhagwa)'],
-          ['Grade', 'Export Grade A, min 16 Brix'],
-          ['Size/Count', '200-250g / 250-300g / 300-350g per 3kg box'],
-          ['Packaging', '3kg / 3.5kg ventilated corrugated boxes; private label available'],
-          ['MOQ', '1 x 20ft reefer (~6,500 kg); air trial from 500 kg'],
-          ['HS Code', '0810 90 10'],
-          ['Shelf life', '60 days at 5C, 90-95% RH'],
-          ['Origin', 'Solapur & Nashik, Maharashtra, India'],
-          ['Carriage', '5C, 90-95% RH, 25 CBM fresh air'],
-          ['Certifications', 'APEDA, FSSAI, ISO 22000/HACCP'],
-          ['Contact', 'presources5@gmail.com / +91 97 67 76 67 31'],
-        ];
-        const w = window.open('', '_blank');
-        w.document.write(
-          '<html><head><title>Spec Sheet — Fresh Pomegranate</title></head>' +
-          '<body style="font-family: Georgia, serif; max-width: 640px; margin: 40px auto; color: #1C231E;">' +
-          '<h1 style="color:#14352A; border-bottom: 3px solid #B8912E; padding-bottom: 10px;">Fresh Pomegranate — Export Spec Sheet</h1>' +
-          '<p style="color:#8A8069;">Padmini Resources Indo Africa SARL · ' + new Date().toLocaleDateString() + '</p>' +
-          '<table style="width:100%; border-collapse: collapse; font-size: 14px;">' +
-          rows.map((r) =>
-            '<tr><td style="padding:9px 12px; border:1px solid #E6DFD0; font-weight:bold; width:180px; background:#FAF7F0;">' + r[0] + '</td>' +
-            '<td style="padding:9px 12px; border:1px solid #E6DFD0;">' + r[1] + '</td></tr>'
-          ).join('') +
-          '</table></body></html>'
-        );
-        w.document.close();
-        w.print();
-      },
-    };
+    return {};
   }
 }
 </script>

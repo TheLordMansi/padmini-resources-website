@@ -119,14 +119,15 @@ class Component extends DCLogic {
   renderVals() {
     const filter = this.state.filter;
     const all = [
-      { slotId: 'ph-grapes', name: 'Grapes', cat: 'fresh', spec: 'Residue-compliant table grapes · 4.5 kg / 9 kg cartons', placeholder: 'Table grapes on vine / packed', href: 'request-a-quote.html' },
-      { slotId: 'ph-pomegranate', name: 'Pomegranate', cat: 'fresh', spec: 'Bhagwa, min 16° Brix · 3 kg / 3.5 kg boxes', placeholder: 'Pomegranates close-up', href: 'pomegranate.html' },
-      { slotId: 'ph-mango', name: 'Mango', cat: 'fresh', spec: 'Alphonso, Kesar, Banganapalli · air &amp; sea options', placeholder: 'Mangoes in tray pack', href: 'request-a-quote.html' },
-      { slotId: 'ph-onion', name: 'Onion', cat: 'fresh', spec: 'Red / pink, 40–60 mm+ · 5–25 kg mesh bags', placeholder: 'Red onions in mesh bags', href: 'request-a-quote.html' },
-      { slotId: 'ph-rice', name: 'Rice', cat: 'staples', spec: 'Basmati 1121 / 1509 &amp; non-basmati · 5–50 kg packs', placeholder: 'Rice grains / bags', href: 'basmati-rice.html' },
-      { slotId: 'ph-pulses', name: 'Pulses', cat: 'staples', spec: 'Chickpeas, lentils, mung · 25 / 50 kg PP bags', placeholder: 'Assorted pulses', href: 'request-a-quote.html' },
-      { slotId: 'ph-spices', name: 'Spices', cat: 'staples', spec: 'Turmeric, cumin, chilli, coriander · whole &amp; bulk', placeholder: 'Whole spices', href: 'request-a-quote.html' },
-      { slotId: 'ph-tea', name: 'Tea', cat: 'staples', spec: 'Orthodox &amp; CTC, Assam / Nilgiri · bulk &amp; private label', placeholder: 'Tea leaves / chests', href: 'request-a-quote.html' },
+      { slotId: 'ph-grapes', name: 'Grapes', cat: 'fresh', spec: 'Residue-compliant table grapes · 4.5 kg / 9 kg cartons', placeholder: 'Table grapes on vine / packed', href: 'grapes.html' },
+      { slotId: 'ph-pomegranate', name: 'Pomegranate', cat: 'fresh', spec: 'Bhagwa, export grade · 3.5 kg / 5 kg cartons', placeholder: 'Pomegranates close-up', href: 'pomegranate.html' },
+      { slotId: 'ph-mango', name: 'Mango', cat: 'fresh', spec: 'Alphonso, Kesar, Banganapalli · air &amp; sea options', placeholder: 'Mangoes in tray pack', href: 'mango.html' },
+      { slotId: 'ph-onion', name: 'Onion', cat: 'fresh', spec: 'Red / white, 45–80 mm · 25 / 50 kg mesh bags', placeholder: 'Red onions in mesh bags', href: 'onion.html' },
+      { slotId: 'ph-rice', name: 'Basmati Rice', cat: 'staples', spec: '1121, 1509, Traditional · 1–50 kg packs', placeholder: 'Rice grains / bags', href: 'basmati-rice.html' },
+      { slotId: 'ph-nonbasmati', name: 'Non-Basmati Rice', cat: 'staples', spec: 'IR 64, Sona Masoori, Swarna · 25 / 50 kg PP bags', placeholder: 'Non-basmati rice in bags', href: 'non-basmati-rice.html' },
+      { slotId: 'ph-pulses', name: 'Pulses', cat: 'staples', spec: 'Toor, Chana, Moong, Masoor, Urad · 1–50 kg bags', placeholder: 'Assorted pulses', href: 'pulses.html' },
+      { slotId: 'ph-spices', name: 'Spices', cat: 'staples', spec: 'Turmeric, chilli, cumin, pepper · whole &amp; ground', placeholder: 'Whole spices', href: 'spices.html' },
+      { slotId: 'ph-tea', name: 'Tea', cat: 'staples', spec: 'CTC, Orthodox, Green · Assam, Darjeeling, Nilgiris', placeholder: 'Tea leaves / chests', href: 'tea.html' },
     ];
     const decode = (s) => s.replace(/&amp;/g, '&');
     const products = all
